@@ -28,7 +28,7 @@ import { ComponentsModule } from "./components/components.module";
     CollapseModule.forRoot(),
     TagInputModule,
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent ],
   providers: [],
   bootstrap: [AppComponent]
 })

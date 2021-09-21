@@ -3,11 +3,8 @@ import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { AuthLayoutRoutes } from "./auth-layout.routing";
+import { LoginComponent } from "./components/login/login.component";
 
-import { LoginComponent } from "../../pages/examples/login/login.component";
-import { PricingComponent } from "../../pages/examples/pricing/pricing.component";
-import { LockComponent } from "../../pages/examples/lock/lock.component";
-import { RegisterComponent } from "../../pages/examples/register/register.component";
 
 @NgModule({
   imports: [
@@ -17,10 +14,7 @@ import { RegisterComponent } from "../../pages/examples/register/register.compon
     ReactiveFormsModule,
   ],
   declarations: [
-    LoginComponent,
-    PricingComponent,
-    LockComponent,
-    RegisterComponent
+    LoginComponent
   ]
 })
 export class AuthLayoutModule {}

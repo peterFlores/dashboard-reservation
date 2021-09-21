@@ -1,0 +1,346 @@
+<div class="header bg-gradient-danger pb-6" >
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header">
+                        <div class="row">
+                            <h3 class="mb-0">Mantenimiento de Clientes</h3>
+                           
+                               
+                           
+                            <div class="ml-auto mr-3">
+                            
+                                <button class="btn btn-md btno1 " (click)="openDefaultModal(modalDefault)"> 
+
+                                    Nuevo
+
+                                </button>
+                            </div>
+                            
+                        </div>
+                       
+                    </div>
+                    <ng-template #modalDefault>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h6 class="modal-title" id="modal-title-default">
+                                    Nuevo
+                                </h6>
+
+                                <button aria-label="Close" class="close" data-dismiss="modal" type="button"
+                                    (click)="defaultModal.hide()">
+                                    <span aria-hidden="true">x</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <div class="container">
+                                    <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Email</label>
+                                            <input type="text" class="form-control" placeholder="Title"
+                                                (focus)="focus5 = true" formControlName="email"
+                                                [ngClass]="{ 'is-invalid': submitted && a.email.errors}"
+                                                (blur)="focus5 = false">
+                                            <div *ngIf="submitted && a.email.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && a.email.errors">Email requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Password</label>
+                                            <input type="text" class="form-control" placeholder="Title"
+                                                (focus)="focus5 = true" formControlName="password"
+                                                [ngClass]="{ 'is-invalid': submitted && a.password.errors}"
+                                                (blur)="focus5 = false">
+                                            <div *ngIf="submitted && a.password.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && a.password.errors">Primer nombre requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Primer nombre</label>
+                                            <input type="text" class="form-control" placeholder="Title"
+                                                (focus)="focus5 = true" formControlName="first_name"
+                                                [ngClass]="{ 'is-invalid': submitted && a.first_name.errors}"
+                                                (blur)="focus5 = false">
+                                            <div *ngIf="submitted && a.first_name.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && a.first_name.errors">Primer nombre requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Segundo nombre</label>
+                                            <input type="text" class="form-control" placeholder="Title"
+                                                (focus)="focus5 = true" formControlName="second_name"
+                                                [ngClass]="{ 'is-invalid': submitted && a.second_name.errors}"
+                                                (blur)="focus5 = false">
+                                            <div *ngIf="submitted && a.second_name.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && a.second_name.errors">Segundo nombre requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Apellido</label>
+                                            <input type="text" class="form-control" placeholder="Title"
+                                                (focus)="focus5 = true" formControlName="last_name"
+                                                [ngClass]="{ 'is-invalid': submitted && a.last_name.errors}"
+                                                (blur)="focus5 = false">
+                                            <div *ngIf="submitted && a.last_name.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && a.last_name.errors">Apellido requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Segundo Apellido</label>
+                                            <input type="text" class="form-control" placeholder="Title"
+                                                (focus)="focus5 = true" formControlName="slast_name"
+                                                [ngClass]="{ 'is-invalid': submitted && a.slast_name.errors}"
+                                                (blur)="focus5 = false">
+                                            <div *ngIf="submitted && a.slast_name.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && a.slast_name.errors">Apellido requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Telefono</label>
+                                            <input type="text" class="form-control" placeholder="Title"
+                                                (focus)="focus5 = true" formControlName="phone"
+                                                [ngClass]="{ 'is-invalid': submitted && a.phone.errors}"
+                                                (blur)="focus5 = false">
+                                            <div *ngIf="submitted && a.phone.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && a.phone.errors">Telefono requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">DPI</label>
+                                            <input type="text" class="form-control" placeholder="Title"
+                                                (focus)="focus5 = true" formControlName="dpi"
+                                                [ngClass]="{ 'is-invalid': submitted && a.dpi.errors}"
+                                                (blur)="focus5 = false">
+                                            <div *ngIf="submitted && a.dpi.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && a.dpi.errors">DPI requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Direccion</label>
+                                            <input type="text" class="form-control" placeholder="Title"
+                                                (focus)="focus5 = true" formControlName="address"
+                                                [ngClass]="{ 'is-invalid': submitted && a.address.errors}"
+                                                (blur)="focus5 = false">
+                                            <div *ngIf="submitted && a.address.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && a.address.errors">Direccion requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Afiliado</label>
+                                            <input type="text" class="form-control" placeholder="Title"
+                                                (focus)="focus5 = true" formControlName="affiliate"
+                                            >
+                                        </div>
+                                        <div class="form-group " >
+                                            <select class="custom-select" [(ngModel)]="selectValue" [ngModelOptions]="{standalone: true}">
+                                              <option value="" disabled>Seleccione...</option>
+                                              <option *ngFor="let item of items" [ngValue]="item.prop">{{item.name}}</option>
+                                           </select>
+                                        </div>
+                                        <button type="submit" class="btn btno">
+                                            Guardar
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template #update>
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h6 class="modal-title" id="modal-title-default">
+                                    Actualizar
+                                </h6>
+
+                                <button aria-label="Close" class="close" data-dismiss="modal" type="button"
+                                    (click)="modalUpdate.hide()">
+                                    <span aria-hidden="true">x</span>
+                                </button>
+                            </div>
+
+                            <div class="modal-body">
+                                <div class="container">
+                                    <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
+                                        <div class="form-group">
+                                            <label class="form-control-label">Email</label>
+                                            <input type="text" class="form-control" placeholder="Title" (focus)="focus5 = true" formControlName="email"
+                                                [ngClass]="{ 'is-invalid': submitted && b.email.errors}" (blur)="focus5 = false">
+                                            <div *ngIf="submitted && b.email.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.email.errors">Email requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Password</label>
+                                            <input type="text" class="form-control" placeholder="Title" (focus)="focus5 = true" formControlName="password"
+                                                [ngClass]="{ 'is-invalid': submitted && b.password.errors}" (blur)="focus5 = false">
+                                            <div *ngIf="submitted && b.password.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.password.errors">Primer nombre requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Primer nombre</label>
+                                            <input type="text" class="form-control" placeholder="Title" (focus)="focus5 = true" formControlName="first_name"
+                                                [ngClass]="{ 'is-invalid': submitted && b.first_name.errors}" (blur)="focus5 = false">
+                                            <div *ngIf="submitted && b.first_name.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.first_name.errors">Primer nombre requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Segundo nombre</label>
+                                            <input type="text" class="form-control" placeholder="Title" (focus)="focus5 = true" formControlName="second_name"
+                                                [ngClass]="{ 'is-invalid': submitted && b.second_name.errors}" (blur)="focus5 = false">
+                                            <div *ngIf="submitted && b.second_name.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.second_name.errors">Segundo nombre requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Apellido</label>
+                                            <input type="text" class="form-control" placeholder="Title" (focus)="focus5 = true" formControlName="last_name"
+                                                [ngClass]="{ 'is-invalid': submitted && b.last_name.errors}" (blur)="focus5 = false">
+                                            <div *ngIf="submitted && b.last_name.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.last_name.errors">Apellido requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Segundo Apellido</label>
+                                            <input type="text" class="form-control" placeholder="Title" (focus)="focus5 = true" formControlName="slast_name"
+                                                [ngClass]="{ 'is-invalid': submitted && b.slast_name.errors}" (blur)="focus5 = false">
+                                            <div *ngIf="submitted && b.slast_name.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.slast_name.errors">Apellido requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Telefono</label>
+                                            <input type="text" class="form-control" placeholder="Title" (focus)="focus5 = true" formControlName="phone"
+                                                [ngClass]="{ 'is-invalid': submitted && b.phone.errors}" (blur)="focus5 = false">
+                                            <div *ngIf="submitted && b.phone.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.phone.errors">Telefono requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">DPI</label>
+                                            <input type="text" class="form-control" placeholder="Title" (focus)="focus5 = true" formControlName="dpi"
+                                                [ngClass]="{ 'is-invalid': submitted && b.dpi.errors}" (blur)="focus5 = false">
+                                            <div *ngIf="submitted && b.dpi.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.dpi.errors">DPI requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Direccion</label>
+                                            <input type="text" class="form-control" placeholder="Title" (focus)="focus5 = true" formControlName="address"
+                                                [ngClass]="{ 'is-invalid': submitted && b.address.errors}" (blur)="focus5 = false">
+                                            <div *ngIf="submitted && b.address.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.address.errors">Direccion requerido</div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="form-control-label">Afiliado</label>
+                                            <input type="text" class="form-control" placeholder="Title" (focus)="focus5 = true" formControlName="affiliate">
+                                        </div>
+                                        <div class="form-group ">
+                                            <select class="custom-select" [(ngModel)]="selectValue" [ngModelOptions]="{standalone: true}">
+                                                <option value="" disabled>Seleccione...</option>
+                                                <option *ngFor="let item of items" [ngValue]="item.prop">{{item.name}}</option>
+                                            </select>
+                                        </div>
+                                        <button type="submit" class="btn btno">
+                                            Guardar
+                                        </button>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+
+                    <ng-template #confirmation let-c="close" let-d="dismiss">
+                        <div class="modal-content bg-gradient-danger">
+                            <div class="modal-header">
+                                <h6 class="modal-title" id="modal-title-notification">Eliminar cliente</h6>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                    (click)="confirmationModal.hide()">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="py-3 text-center">
+                                    <i class="ni ni-bell-55 ni-3x"></i>
+                                    <h4 class="heading mt-4">Esta seguro de eliminar este cliente?</h4>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-white"
+                                    (click)="deleteClient(selectedRow)">Si</button>
+                                <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal"
+                                    (click)="confirmationModal.hide()">Cerrar</button>
+                            </div>
+                        </div>
+                    </ng-template>
+                    <div class="dataTables_wrapper py-4">
+                        <div class="row">
+
+                            <div class="col-sm-12 col-md-6">
+                                <div class="dataTables_length" id="datatable_length">
+                                    <label>
+                                        Show
+                                        <select name="datatable_length" aria-controls="datatable"
+                                            class="form-control form-control-sm" (change)="entriesChange($event)">
+                                            <option value="10" [selected]="entries == 10">10</option>
+                                            <option value="25" [selected]="entries == 25">25</option>
+                                            <option value="50" [selected]="entries == 50">50</option>
+                                            <option value="-1" [selected]="entries == -1">All</option>
+                                        </select>
+                                        entries
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6">
+                                <div id="datatable_filter" class="dataTables_filter">
+                                    <label>
+                                        <input type="search" class="form-control form-control-sm"
+                                            placeholder="Search records" aria-controls="datatable"
+                                            (keyup)="filterTable($event)" />
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50"
+                            [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
+                            [scrollbarH]="true" (activate)="onActivate($event)" [rows]="temp">
+                            <ngx-datatable-column *ngFor="let item of columns" name="{{ item.name }}"
+                                prop="{{ item.prop }}">
+
+                            </ngx-datatable-column>
+                            <ngx-datatable-column name="OPTIONS">
+                                <ng-template let-row="row" let-value="value" let-rowIndex="rowIndex"
+                                    ngx-datatable-cell-template>
+                                    <div class="own">
+                                        <button class="btn btn-danger btno2"
+                                            (click)="openDeleteModal(confirmation, row)">
+                                            DELETE
+                                        </button>
+                                        <button class="btn btn-primary btno2"
+                                        (click)="openUpdateModal(update, row)">
+                                        UPDATE
+                                    </button>
+
+                                    </div>
+                                    
+
+                                </ng-template>
+                            </ngx-datatable-column>
+                        </ngx-datatable>
+                    </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
