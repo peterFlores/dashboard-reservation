@@ -120,9 +120,9 @@
                                         <div class="form-group">
                                             <label class="form-control-label">Contraseña</label>
                                             <input type="text" class="form-control" placeholder="Contraseña" (focus)="focus5 = true" formControlName="password"
-                                                [ngClass]="{ 'is-invalid': submitted && b.password.errors}" (blur)="focus5 = false">
-                                            <div *ngIf="submitted && b.password.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && b.password.errors">Contraseña requerido</div>
+                                                [ngClass]="{ 'is-invalid': submitted && a.password.errors}" (blur)="focus5 = false">
+                                            <div *ngIf="submitted && a.password.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && a.password.errors">Contraseña requerido</div>
                                             </div>
                                         </div>
                                         <div class="form-group " >
@@ -162,80 +162,80 @@
                                             <label class="form-control-label">Primer nombre</label>
                                             <input type="text" class="form-control" placeholder="Primer nombre"
                                                 (focus)="focus5 = true" formControlName="first_name"
-                                                [ngClass]="{ 'is-invalid': submitted && a.first_name.errors}"
+                                                [ngClass]="{ 'is-invalid': submitted && b.first_name.errors}"
                                                 (blur)="focus5 = false">
-                                            <div *ngIf="submitted && a.first_name.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.first_name.errors">Primer nombre requerido</div>
+                                            <div *ngIf="submitted && b.first_name.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.first_name.errors">Primer nombre requerido</div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="form-control-label">Segundo nombre</label>
                                             <input type="text" class="form-control" placeholder="Segundo nombre"
                                                 (focus)="focus5 = true" formControlName="second_name"
-                                                [ngClass]="{ 'is-invalid': submitted && a.second_name.errors}"
+                                                [ngClass]="{ 'is-invalid': submitted && b.second_name.errors}"
                                                 (blur)="focus5 = false">
-                                            <div *ngIf="submitted && a.second_name.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.second_name.errors">Segundo nombre requerido</div>
+                                            <div *ngIf="submitted && b.second_name.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.second_name.errors">Segundo nombre requerido</div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="form-control-label">Primer Apellido</label>
                                             <input type="text" class="form-control" placeholder="Primer Apellido"
                                                 (focus)="focus5 = true" formControlName="last_name"
-                                                [ngClass]="{ 'is-invalid': submitted && a.last_name.errors}"
+                                                [ngClass]="{ 'is-invalid': submitted && b.last_name.errors}"
                                                 (blur)="focus5 = false">
-                                            <div *ngIf="submitted && a.last_name.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.last_name.errors">Primer Apellido requerido</div>
+                                            <div *ngIf="submitted && b.last_name.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.last_name.errors">Primer Apellido requerido</div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="form-control-label">Segundo Apellido</label>
                                             <input type="text" class="form-control" placeholder="Segundo Apellido"
                                                 (focus)="focus5 = true" formControlName="slast_name"
-                                                [ngClass]="{ 'is-invalid': submitted && a.slast_name.errors}"
+                                                [ngClass]="{ 'is-invalid': submitted && b.slast_name.errors}"
                                                 (blur)="focus5 = false">
-                                            <div *ngIf="submitted && a.slast_name.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.slast_name.errors">Segundo Apellido requerido</div>
+                                            <div *ngIf="submitted && b.slast_name.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.slast_name.errors">Segundo Apellido requerido</div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="form-control-label">Teléfono</label>
                                             <input type="text" class="form-control" placeholder="Teléfono"
                                                 (focus)="focus5 = true" formControlName="phone"
-                                                [ngClass]="{ 'is-invalid': submitted && a.phone.errors}"
+                                                [ngClass]="{ 'is-invalid': submitted && b.phone.errors}"
                                                 (blur)="focus5 = false">
-                                            <div *ngIf="submitted && a.phone.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.phone.errors">Teléfono requerido</div>
+                                            <div *ngIf="submitted && b.phone.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.phone.errors">Teléfono requerido</div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="form-control-label">Email</label>
                                             <input type="text" class="form-control" placeholder="Email"
                                                 (focus)="focus5 = true" formControlName="email"
-                                                [ngClass]="{ 'is-invalid': submitted && a.email.errors}"
+                                                [ngClass]="{ 'is-invalid': submitted && b.email.errors}"
                                                 (blur)="focus5 = false">
-                                            <div *ngIf="submitted && a.email.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.email.errors">Email requerido</div>
+                                            <div *ngIf="submitted && b.email.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.email.errors">Email requerido</div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="form-control-label">DPI</label>
                                             <input type="text" class="form-control" placeholder="DPI"
                                                 (focus)="focus5 = true" formControlName="dpi"
-                                                [ngClass]="{ 'is-invalid': submitted && a.dpi.errors}"
+                                                [ngClass]="{ 'is-invalid': submitted && b.dpi.errors}"
                                                 (blur)="focus5 = false">
-                                            <div *ngIf="submitted && a.dpi.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.dpi.errors">DPI requerido</div>
+                                            <div *ngIf="submitted && b.dpi.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.dpi.errors">DPI requerido</div>
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label class="form-control-label">Dirección</label>
                                             <input type="text" class="form-control" placeholder="Dirección"
                                                 (focus)="focus5 = true" formControlName="address"
-                                                [ngClass]="{ 'is-invalid': submitted && a.address.errors}"
+                                                [ngClass]="{ 'is-invalid': submitted && b.address.errors}"
                                                 (blur)="focus5 = false">
-                                            <div *ngIf="submitted && a.address.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.address.errors">Dirección requerida</div>
+                                            <div *ngIf="submitted && b.address.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.address.errors">Dirección requerida</div>
                                             </div>
                                         </div>
                                         <div class="form-group">
