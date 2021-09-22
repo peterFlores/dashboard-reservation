@@ -136,21 +136,22 @@ export class ClientComponent implements OnInit {
   openUpdateModal(modal: TemplateRef<any>, row: Client) {
     this.selectedRow = row;
     this.updateForm = this.formBuilder.group({
-      first_name: [row.first_name, [Validators.required]],
-      second_name: [row.second_name, [Validators.required]],
-      last_name: [row.last_name, [Validators.required]],
-      slast_name: [row.slast_name, [Validators.required]],
-      phone: [row.phone, [Validators.required]],
-      dpi: [row.dpi, [Validators.required]],
+      first_name: [row.first_name, [Validators.required, Validators.maxLength(20)]],
+      second_name: [row.second_name, [Validators.required, Validators.maxLength(20)]],
+      last_name: [row.last_name, [Validators.required, Validators.maxLength(20)]],
+      slast_name: [row.slast_name, [Validators.required, Validators.maxLength(20)]],
+      phone: [row.phone, [Validators.required, Validators.minLength(8)]],
+      dpi: [row.dpi, [Validators.required , Validators.minLength(13)]],
       address: [row.address, [Validators.required]],
       client_type: [row.client_type],
       affiliate: [row.affiliate],
-      email: [row.email, [Validators.required]],
+      email: [row.email, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
       password: [row.password, [Validators.required, Validators.minLength(5)]]
     });
   
     this.updateModal = this._modalService.show(modal, this.update);
   }
+
   deleteClient(row: Client) {
     this._clientService.delete(row._id).subscribe(data => {
       this.ngOnInit();
