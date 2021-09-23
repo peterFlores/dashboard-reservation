@@ -6,7 +6,8 @@ export const environment = {
   production: false,
   apiUrlOAuth: 'http://localhost:3000/auth',
   apiUrlClient: 'http://localhost:3001/api/v1/client',
-  apiUrlUser: 'http://localhost:3002/api/v1/user'
+  apiUrlUser: 'http://localhost:3002/api/v1/user',
+  apiUrlMenu: 'http://localhost:3003/api/v1/menu',
 };
 
 /*

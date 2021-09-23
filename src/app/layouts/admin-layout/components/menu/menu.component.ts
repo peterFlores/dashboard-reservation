@@ -2,16 +2,16 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { ComponentsComponent } from 'src/app/pages/components/components/components.component';
-import { ClientService } from 'src/app/services/client.service';
-import { Client } from './client.model';
+import { MenuService } from 'src/app/services/menu.service';
+import { User } from '../user/user.model';
+import { Menu } from './menu.model';
 
 @Component({
-  selector: 'app-client',
-  templateUrl: './client.component.html',
-  styleUrls: ['./client.component.scss']
+  selector: 'app-menu',
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss']
 })
-export class ClientComponent implements OnInit {
-
+export class MenuComponent implements OnInit {
   entries: number = 10;
   selected: any[] = [];
   activeRow: any;
@@ -40,59 +40,51 @@ export class ClientComponent implements OnInit {
   updateForm: FormGroup;
   _user: string;
 
-  selectedRow: Client;
+  selectedRow: Menu;
 
-  temp: Client[] = [];
-  list: Client[] =[];
+  temp: Menu[] = [];
+  list: Menu[] =[];
+
   items: any = [
-    { name: "Nacional", prop: "NACIONAL"},
-    { name: "Extranjero", prop: "EXTRANJERO"},
+    { name: "Activo", prop: "TRUE"},
+    { name: "Desactivado", prop: "FALSE"},
     
   ];
 
   columns: any = [
-    { name: "Primer nombre", prop: "first_name"},
-    { name: "Segundo nombre", prop: "second_name"},
-    { name: "Primer Apellido", prop: "last_name"},
-    { name: "Tercer Apellido", prop: "slast_name"},
-    { name: "Telefono", prop: "phone"},
-    { name: "DPI", prop: "dpi"},
-    { name: "Direccion", prop: "address"},
-    { name: "Tipo de cliente", prop: "client_type"},
-    { name: "Afiliado", prop: "affiliate"}
-    
+    { name: "Status", prop: "status"},
+    { name: "Imagen", prop: "image"},
+    { name: "Ruta", prop: "path"},
+    { name: "Descripción", prop: "description"},
+    { name: "Nombre Menu", prop: "name"},
+    { name: "v", prop: "__v"}
   ];
 
   selectValue: string;
 
-  constructor(private _clientService: ClientService, private _modalService: BsModalService, private formBuilder: FormBuilder) { }
+  constructor(private _menuService: MenuService, private _modalService: BsModalService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.newForm = this.formBuilder.group({
-      first_name: ['', [Validators.required]],
-      second_name: ['', [Validators.required]],
-      last_name: ['', [Validators.required]],
-      slast_name: ['', [Validators.required]],
-      phone: ['', [Validators.required]],
-      dpi: ['', [Validators.required]],
-      address: ['', [Validators.required]],
-      client_type: [''],
-      affiliate: [''],
-      email: ['', [Validators.required]],
-      password: ['', [Validators.required, Validators.minLength(5)]]
+      status: ['', [Validators.required]],
+      image: ['', [Validators.required]],
+      path: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      name: ['', [Validators.required]],
+      __v: ['', [Validators.required]]
     });
-    this._clientService.getClients().subscribe(data => {
+
+    this._menuService.getMenus().subscribe(data => {
       this.list = data;
       this.temp = this.list;
       console.log(data);
       console.log(this.list);
     });
-
   }
-
   entriesChange($event) {
     this.entries = $event.target.value;
   }
+
   filterTable($event) {
     let val = $event.target.value.toString().toLowerCase();
     console.log(val);
@@ -114,46 +106,39 @@ export class ClientComponent implements OnInit {
       }
     });
   }
-  
+
   get a() { return this.newForm.controls; }
   get b() { return this.updateForm.controls; }
 
-
-  openDefaultModal(modalDefault: TemplateRef<any>) {
+openDefaultModal(modalDefault: TemplateRef<any>) {
     this.newForm.reset();
     this.defaultModal = this._modalService.show(modalDefault, this.default);
   }
   onActivate(event) {
     this.activeRow = event.row;
   }
-
-  openDeleteModal(modal: TemplateRef<any>, row: Client) {
+  openDeleteModal(modal: TemplateRef<any>, row: Menu) {
     this.selectedRow = row;
     this.confirmationModal = this._modalService.show(modal, this.confirmation);
   }
 
-  
-  openUpdateModal(modal: TemplateRef<any>, row: Client) {
+
+  openUpdateModal(modal: TemplateRef<any>, row: Menu) {
     this.selectedRow = row;
     this.updateForm = this.formBuilder.group({
-      first_name: [row.first_name, [Validators.required, Validators.maxLength(20)]],
-      second_name: [row.second_name, [Validators.required, Validators.maxLength(20)]],
-      last_name: [row.last_name, [Validators.required, Validators.maxLength(20)]],
-      slast_name: [row.slast_name, [Validators.required, Validators.maxLength(20)]],
-      phone: [row.phone, [Validators.required, Validators.minLength(8)]],
-      dpi: [row.dpi, [Validators.required , Validators.minLength(13)]],
-      address: [row.address, [Validators.required]],
-      client_type: [row.client_type],
-      affiliate: [row.affiliate],
-      email: [row.email, [Validators.required, Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$")]],
-      password: [row.password, [Validators.required, Validators.minLength(5)]]
+      status: [row.status, [Validators.required]],
+      image: [row.image, [Validators.required]],
+      path: [row.path, [Validators.required]],
+      description: [row.description, [Validators.required]],
+      name: [row.name, [Validators.required]],
+      __v: [row.__v, [Validators.required]]
     });
   
     this.updateModal = this._modalService.show(modal, this.update);
   }
 
-  deleteClient(row: Client) {
-    this._clientService.delete(row._id).subscribe(data => {
+  deleteMenu(row: Menu) {
+    this._menuService.delete(row._id).subscribe(data => {
       this.ngOnInit();
     }, error => {
       console.log(error);
@@ -162,15 +147,14 @@ export class ClientComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
-    this.newForm.get("client_type").setValue(this.selectValue);
+    this.newForm.get("status").setValue(this.selectValue);
     if (this.newForm.invalid) {
       console.log(this.newForm);
       return;
     }
-
     let json = this.newForm.getRawValue();
     console.log(this.newForm.getRawValue());
-    this._clientService.create(json).subscribe(data => {
+    this._menuService.create(json).subscribe(data => {
       this.defaultModal.hide();
       console.log(data);
       this.ngOnInit();
@@ -179,17 +163,16 @@ export class ClientComponent implements OnInit {
       
     });
   }
-
   onUpdate() {
     this.submitted = true;
-    this.updateForm.get("client_type").setValue(this.selectValue);
+    this.newForm.get("status").setValue(this.selectValue);
     if (this.updateForm.invalid) {
       console.log(this.updateForm);
       return;
     }
 
     let json = this.updateForm.getRawValue();
-    this._clientService.update(json, this.selectedRow._id).subscribe(data => {
+    this._menuService.update(json, this.selectedRow._id).subscribe(data => {
       this.updateModal.hide();
       console.log(data);
       this.ngOnInit();

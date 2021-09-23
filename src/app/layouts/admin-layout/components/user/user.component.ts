@@ -52,6 +52,11 @@ export class UserComponent implements OnInit {
     { name: "Operador", prop: "OPERADOR"},
     
   ];
+
+  itemsmenu: any = [
+    { name: "menu1", prop: ["menu"]},
+    { name: "menu2", prop: ["menu"]},
+  ];
   
   columns: any =[
     { name: "Primer Nombre", prop: "first_name"},
@@ -66,6 +71,7 @@ export class UserComponent implements OnInit {
   ];
 
   selectValue: string;
+  selectMenu: string[];
 
   constructor(private _userService: UserService, private _modalService: BsModalService, private formBuilder: FormBuilder) { }
 
@@ -80,6 +86,7 @@ export class UserComponent implements OnInit {
       dpi: ['', [Validators.required , Validators.minLength(13)]],
       address: ['', [Validators.required]],
       profile_type: ['', [Validators.required]],
+      menu: [[], [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(5)]]
 
     });
@@ -147,6 +154,7 @@ export class UserComponent implements OnInit {
       dpi: [row.dpi, [Validators.required , Validators.minLength(13)]],
       address: [row.address, [Validators.required]],
       profile_type: [row.address, [Validators.required]],
+      menu: [row.menu, [Validators.required]],
       password: [row.password, [Validators.required, Validators.minLength(5)]]
       });
   
@@ -164,6 +172,7 @@ export class UserComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.newForm.get("profile_type").setValue(this.selectValue);
+    this.newForm.get("menu").setValue(this.selectMenu);
     if (this.newForm.invalid) {
       console.log(this.newForm);
       return;
@@ -185,6 +194,7 @@ export class UserComponent implements OnInit {
   onUpdate() {
     this.submitted = true;
     this.updateForm.get("profile_type").setValue(this.selectValue);
+    this.newForm.get("menu").setValue(this.selectMenu);
     if (this.updateForm.invalid) {
       console.log(this.updateForm);
       return;

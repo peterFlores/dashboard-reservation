@@ -8,13 +8,15 @@ import { ClientComponent } from './components/client/client.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { ModalModule } from 'ngx-bootstrap';
 import { UserComponent } from './components/user/user.component';
+import { MenuComponent } from './components/menu/menu.component';
 
 
 
 @NgModule({
   declarations: [
     ClientComponent,
-    UserComponent
+    UserComponent,
+    MenuComponent
   ],
   imports: [
     CommonModule,
