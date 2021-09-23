@@ -10,6 +10,7 @@ import { ModalModule } from 'ngx-bootstrap';
 
 import { UserComponent } from './components/user/user.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 
 
 
@@ -27,7 +28,7 @@ import { MenuComponent } from './components/menu/menu.component';
     HttpClientModule,
     NgxDatatableModule,
     ModalModule.forRoot(),
-    NgModule,
+    NgSelectModule
   ]
 })
 export class AdminLayoutModule { }

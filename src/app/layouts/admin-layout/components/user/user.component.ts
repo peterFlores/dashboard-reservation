@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { ComponentsComponent } from 'src/app/pages/components/components/components.component';
@@ -11,7 +11,9 @@ import { User } from './user.model';
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss']
+  styleUrls: ['./user.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+
 })
 
 export class UserComponent implements OnInit {
@@ -185,7 +187,7 @@ export class UserComponent implements OnInit {
   onSubmit() {
     this.submitted = true;
     this.newForm.get("profile_type").setValue(this.selectValue);
-    this.newForm.get("menu").setValue(this.selectMenu);
+   // this.newForm.get("menu").setValue(this.selectMenu);
     if (this.newForm.invalid) {
       console.log(this.newForm);
       return;
@@ -207,7 +209,7 @@ export class UserComponent implements OnInit {
   onUpdate() {
     this.submitted = true;
     this.updateForm.get("profile_type").setValue(this.selectValue);
-    this.newForm.get("menu").setValue(this.selectMenu);
+   // this.newForm.get("menu").setValue(this.selectMenu);
     if (this.updateForm.invalid) {
       console.log(this.updateForm);
       return;
