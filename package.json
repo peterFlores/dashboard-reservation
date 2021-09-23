@@ -23,6 +23,7 @@
     "@fullcalendar/core": "4.4.0",
     "@fullcalendar/daygrid": "4.4.0",
     "@fullcalendar/interaction": "4.4.0",
+    "@ng-select/ng-select": "^7.3.0",
     "@swimlane/ngx-datatable": "^16.0.3",
     "bootstrap": "4.4.1",
     "chart.js": "2.7.3",

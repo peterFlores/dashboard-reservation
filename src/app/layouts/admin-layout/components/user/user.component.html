@@ -134,10 +134,9 @@
                                         </div>
                                         <div class="form-group " >
                                             <label class="form-control-label">Tipo de Menu</label>
-                                            <select class="custom-select"  [(ngModel)]="selectMenu" [ngModelOptions]="{standalone: true}">
-                                              <option value="" disabled>Seleccione...</option>
-                                              <option *ngFor="let item of itemsmenu" [ngValue]="item.prop">{{item.name}}</option>
-                                           </select>
+                                            <ng-select labelForId="name" placeholder="Select school" [items]="listMenu" formControlName="menu" multiple="true"
+                                            bindValue="" [compareWith]="compareFunction">
+        </ng-select>
                                         </div>
                                         <button type="submit" class="btn btno">
                                             Guardar

@@ -11,7 +11,7 @@ import { Menu } from '../layouts/admin-layout/components/menu/menu.model';
 export class MenuService {
  
   private headers = new HttpHeaders()
-  .set("Content-Type","aplication/json")
+  .set("Content-Type","application/json")
 
   constructor(private _httpClient: HttpClient) {}
 
@@ -24,7 +24,7 @@ export class MenuService {
    }
  
    create(data: string): Observable<Menu> {
-     
+     console.log(data);
      return this._httpClient.post<Menu>(`${environment.apiUrlMenu}`, data, {
        headers: this.headers
      });

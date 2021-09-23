@@ -3,7 +3,6 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { ComponentsComponent } from 'src/app/pages/components/components/components.component';
 import { MenuService } from 'src/app/services/menu.service';
-import { User } from '../user/user.model';
 import { Menu } from './menu.model';
 
 @Component({
@@ -46,8 +45,8 @@ export class MenuComponent implements OnInit {
   list: Menu[] =[];
 
   items: any = [
-    { name: "Activo", prop: "TRUE"},
-    { name: "Desactivado", prop: "FALSE"},
+    { name: "Activo", prop: true},
+    { name: "Desactivado", prop: false},
     
   ];
 
@@ -70,8 +69,7 @@ export class MenuComponent implements OnInit {
       image: ['', [Validators.required]],
       path: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      name: ['', [Validators.required]],
-      __v: ['', [Validators.required]]
+      name: ['', [Validators.required]]
     });
 
     this._menuService.getMenus().subscribe(data => {
@@ -130,9 +128,8 @@ openDefaultModal(modalDefault: TemplateRef<any>) {
       image: [row.image, [Validators.required]],
       path: [row.path, [Validators.required]],
       description: [row.description, [Validators.required]],
-      name: [row.name, [Validators.required]],
-      __v: [row.__v, [Validators.required]]
-    });
+      name: [row.name, [Validators.required]]
+      });
   
     this.updateModal = this._modalService.show(modal, this.update);
   }

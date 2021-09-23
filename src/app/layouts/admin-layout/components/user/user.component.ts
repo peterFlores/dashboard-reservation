@@ -3,6 +3,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { ComponentsComponent } from 'src/app/pages/components/components/components.component';
 import { UserService } from 'src/app/services/user.service';
+import { MenuService } from 'src/app/services/menu.service';
+
+import { Menu } from '../menu/menu.model';
 import { User } from './user.model';
 
 @Component({
@@ -71,12 +74,22 @@ export class UserComponent implements OnInit {
   ];
 
   selectValue: string;
-  selectMenu: string[];
+  listMenu: Menu[] =[];
 
-  constructor(private _userService: UserService, private _modalService: BsModalService, private formBuilder: FormBuilder) { }
+  constructor(private _userService: UserService,private _menuService: MenuService, private _modalService: BsModalService, private formBuilder: FormBuilder) { }
+
 
   ngOnInit() {
+
+    this._menuService.getMenus().subscribe(data => {
+      this.listMenu = data;
+      console.log(data);
+      console.log(this.list);
+    });
+    
+
     this.newForm = this.formBuilder.group({
+
       first_name: ['',  [Validators.required, Validators.maxLength(20)]],
       second_name: ['',  [Validators.required, Validators.maxLength(20)]],
       last_name: ['', [Validators.required, Validators.maxLength(20)]],
@@ -86,7 +99,7 @@ export class UserComponent implements OnInit {
       dpi: ['', [Validators.required , Validators.minLength(13)]],
       address: ['', [Validators.required]],
       profile_type: ['', [Validators.required]],
-      menu: [[], [Validators.required]],
+      menu: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(5)]]
 
     });

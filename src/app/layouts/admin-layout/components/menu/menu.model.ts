@@ -5,5 +5,4 @@ export interface Menu {
     path?: string;
     description?: string;
     name?: string;
-    __v?: number;
 }
