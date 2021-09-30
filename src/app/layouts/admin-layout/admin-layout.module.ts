@@ -11,6 +11,7 @@ import { ModalModule } from 'ngx-bootstrap';
 import { UserComponent } from './components/user/user.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { NgSelectModule } from '@ng-select/ng-select';
+import { HostalComponent } from './components/hostal/hostal.component';
 
 
 
@@ -18,7 +19,8 @@ import { NgSelectModule } from '@ng-select/ng-select';
   declarations: [
     ClientComponent,
     UserComponent,
-    MenuComponent
+    MenuComponent,
+    HostalComponent
   ],
   imports: [
     CommonModule,

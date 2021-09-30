@@ -8,6 +8,7 @@ export const environment = {
   apiUrlClient: 'http://localhost:3001/api/v1/client',
   apiUrlUser: 'http://localhost:3002/api/v1/user',
   apiUrlMenu: 'http://localhost:3003/api/v1/menu',
+  apiHostal: 'http://localhost:3004/api/v1/hostal',
 };
 
 /*
