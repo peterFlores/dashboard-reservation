@@ -57,11 +57,6 @@ export class UserComponent implements OnInit {
     { name: "Operador", prop: "OPERADOR"},
     
   ];
-
-  itemsmenu: any = [
-    { name: "menu1", prop: ["menu"]},
-    { name: "menu2", prop: ["menu"]},
-  ];
   
   columns: any =[
     { name: "Primer Nombre", prop: "first_name"},
@@ -82,6 +77,13 @@ export class UserComponent implements OnInit {
 
 
   ngOnInit() {
+
+    this._userService.getUsers().subscribe(data => {
+      this.list = data;
+      this.temp = this.list;
+      console.log(data);
+      console.log(this.list);
+    });
 
     this._menuService.getMenus().subscribe(data => {
       this.listMenu = data;
@@ -106,12 +108,6 @@ export class UserComponent implements OnInit {
 
     });
 
-    this._userService.getUsers().subscribe(data => {
-      this.list = data;
-      this.temp = this.list;
-      console.log(data);
-      console.log(this.list);
-    });
   }
 
   entriesChange($event) {

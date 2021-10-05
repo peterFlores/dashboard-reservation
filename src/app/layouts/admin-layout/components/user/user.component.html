@@ -273,7 +273,7 @@
                                             <label class="form-control-label">Tipo de Menu</label>
                                             <select class="custom-select"  [(ngModel)]="selectMenu" [ngModelOptions]="{standalone: true}">
                                               <option value="" disabled>Seleccione...</option>
-                                              <option *ngFor="let item of itemsmenu" [ngValue]="item.prop">{{item.name}}</option>
+                                              <option *ngFor="let item of listMenu" [ngValue]="item.prop">{{item.name}}</option>
                                            </select>
                                         </div>
 
