@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { ComponentsComponent } from 'src/app/pages/components/components/components.component';
 import { HostalService } from 'src/app/services/hostal.service';
-import { Hostal } from './hostal.model';
+import { Hostal, PriceList } from './hostal.model';
 
 
 @Component({
@@ -44,8 +44,7 @@ export class HostalComponent implements OnInit {
 
   temp: Hostal[] = [];
   list: Hostal[] = [];
-
-
+  
   columns: any =[
     { name: "Nombre Hostal" , prop: "name"},
     { name: "Descripción" , prop: "description"},
