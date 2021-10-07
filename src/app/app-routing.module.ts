@@ -5,6 +5,7 @@ import { BrowserModule } from "@angular/platform-browser";
 
 import { AdminLayoutComponent } from "./layouts/admin-layout/admin-layout.component";
 import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component";
+import { ClientLayoutComponent } from "./layouts/client-layout/client-layout.component";
 
 const routes: Routes = [
   {
@@ -15,6 +16,22 @@ const routes: Routes = [
         path: "dashboard",
         loadChildren:
           "./layouts/admin-layout/admin-layout.module#AdminLayoutModule"
+      },
+      // {
+      //   path: "components",
+      //   loadChildren: "./pages/components/components.module#ComponentsModule"
+      // }
+    ],
+   // canActivate: [AuthGuard]
+  },
+  {
+    path: "",
+    component: ClientLayoutComponent,
+    children: [
+      {
+        path: "client",
+        loadChildren:
+          "./layouts/client-layout/client-layout.module#ClientLayoutModule"
       },
       // {
       //   path: "components",

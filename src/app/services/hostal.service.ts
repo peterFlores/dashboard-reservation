@@ -10,28 +10,39 @@ import { Hostal } from '../layouts/admin-layout/components/hostal/hostal.model';
 export class HostalService {
 
   private headers = new HttpHeaders()
-  .set("Content-Type","aplication/json")
+    .set("Content-Type", "application/json")
 
-  constructor(private _httpClient: HttpClient) {}
+  constructor(private _httpClient: HttpClient) { }
 
-  getHostal(): Observable<Hostal[]>{
+  getHostal(): Observable<Hostal[]> {
     return this._httpClient.get<Hostal[]>(`${environment.apiUrlHostal}`);
   }
 
+  getHostalById(id: string): Observable<Hostal> {
+    return this._httpClient.get<Hostal>(`${environment.apiUrlHostal}/${id}`);
+  }
+
+
   delete(id: string): Observable<any> {
-    return this._httpClient.delete<any>(`${environment.apiUrlHostal}/${id}`); 
-   }
- 
-   create(data: string): Observable<Hostal> {
-     
-     return this._httpClient.post<Hostal>(`${environment.apiUrlHostal}`, data, {
-       headers: this.headers
-     });
-   }
- 
-   update(data: string, id: string): Observable<Hostal> {
-     return this._httpClient.put<Hostal>(`${environment.apiUrlHostal}/${id}`, data, {
-       headers: this.headers
-     });
-   }
+    return this._httpClient.delete<any>(`${environment.apiUrlHostal}/${id}`);
+  }
+
+  create(data: string): Observable<Hostal> {
+
+    return this._httpClient.post<Hostal>(`${environment.apiUrlHostal}`, data, {
+      headers: this.headers
+    });
+  }
+
+  update(data: string, id: string): Observable<Hostal> {
+    return this._httpClient.put<Hostal>(`${environment.apiUrlHostal}/${id}`, data, {
+      headers: this.headers
+    });
+  }
+
+  findReservation(data): Observable<any> {
+    return this._httpClient.post<any>(`${environment.apiUrlHostal}/reservation`, data, {
+      headers: this.headers
+    })
+  }
 }

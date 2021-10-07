@@ -14,6 +14,7 @@ import { AuthLayoutComponent } from "./layouts/auth-layout/auth-layout.component
 
 import { AppRoutingModule } from "./app-routing.module";
 import { ComponentsModule } from "./components/components.module";
+import { ClientLayoutComponent } from "./layouts/client-layout/client-layout.component";
 
 @NgModule({
   imports: [
@@ -28,7 +29,7 @@ import { ComponentsModule } from "./components/components.module";
     CollapseModule.forRoot(),
     TagInputModule,
   ],
-  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent ],
+  declarations: [AppComponent, AdminLayoutComponent, AuthLayoutComponent, ClientLayoutComponent ],
   providers: [],
   bootstrap: [AppComponent]
 })

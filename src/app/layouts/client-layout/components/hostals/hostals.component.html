@@ -1,0 +1,36 @@
+<div class="header bg-gradient-warning pb-6">
+    <div class="container-fluid">
+      <div class="header-body">
+        <!-- Card stats -->
+  
+        <div class="row align-items-center py-4">
+          <div
+            class="col-xl-4 col-lg-6"
+            *ngFor="let hostal of list"
+          >
+            <div class="card card-stats mb-4 mb-xl-4">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col">
+                    <span class="h3 font-weight-bold mb-0">{{ hostal.name }}</span>
+                  </div>
+                  <div class="col-auto">
+                    <div class="image-fix rounded-circle">
+                      <img class="image-fix" src="{{ hostal.pictures[0] }}" />
+                    </div>
+                  </div>
+                </div>
+                <div class="mt-4 mb-0">
+                  <a routerLink="/client/hostals/{{hostal._id}}"
+                    class="btn btn-success btno"
+                    >Seleccionar</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

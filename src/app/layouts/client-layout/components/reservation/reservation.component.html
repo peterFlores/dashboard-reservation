@@ -1,0 +1,174 @@
+<div class=" header bg-danger pb-6">
+  <div class=" container-fluid">
+    <div class=" header-body">
+      <div class=" row align-items-center py-4">
+        <div class=" col-lg-6 col-7">
+          <h6 class=" h2 text-white d-inline-block mb-0">Reservaciones</h6>
+
+          <nav aria-label="breadcrumb" class=" d-none d-md-inline-block ml-md-4">
+            <ol class=" breadcrumb breadcrumb-links breadcrumb-dark">
+              <li class=" breadcrumb-item">
+                <a href="javascript:void(0)"> <i class=" fas fa-home"> </i> </a>
+              </li>
+
+              <li class=" breadcrumb-item">
+                <a href="javascript:void(0)"> Disponibilidad </a>
+              </li>
+
+
+            </ol>
+          </nav>
+        </div>
+
+        <div class=" col-lg-6 col-5 text-right">
+          <a class=" btn btn-sm btn-neutral" href="javascript:void(0)"> New </a>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+<div class=" container-fluid mt--6">
+
+
+
+
+  <div class=" row align-items-center py-4">
+    <div class="col">
+      <div class="card">
+        <div class="card-header shadow">
+          <div class="row">
+            <h3 class="mb-0">Consulta de Disponibilidad</h3>
+            <div class="ml-auto mr-3"></div>
+          </div>
+          <div class="row">
+            <div class="col-12 my-3">
+              <form [formGroup]="filterForm" (ngSubmit)="onSubmit()">
+                <div class="form-row">
+                  
+                  <div class="form-group col-12 col-md-3 col-sm-3" [ngClass]="{ focused: focus5 === true }">
+                    <label class="form-control-label">Hostal</label>
+                    <div class="input-group input-group-merge">
+                      <select class="custom-select" formControlName="hostal" [ngClass]="{
+                        'is-invalid': submitted && f.hostal.errors
+                      }">
+                        <option value="" disabled>Seleccione...</option>
+                        <option
+                          *ngFor="let item of temp"
+                          [ngValue]="item._id"
+                        >
+                          {{ item.name }}
+                        </option>
+                      </select>
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="fas fa-hotel"> </i>
+                        </span>
+                      </div>
+                      <div
+                        *ngIf="submitted && f.hostal.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="submitted && f.hostal.errors">
+                          Hostal
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  <div class="form-group mr-1" [ngClass]="{ focused: focus5 === true }">
+                    <label class="form-control-label">Fecha</label>
+                    <div class="input-group input-group-merge">
+                      <input class="form-control" formControlName="date" type="text"
+                        placeholder="YYYY-MM-DD - YYYY-MM-DD" (focus)="focus5 = true" (blur)="focus5 = false"
+                        bsDaterangepicker [(ngModel)]="bsRangeValue" [bsConfig]="{
+                          isAnimated: true,
+                          containerClass: 'theme-red',
+                          rangeInputFormat: 'YYYY-MM-DD'
+                        }" />
+
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="fas fa-calendar"> </i>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="form-group nmts" [ngClass]="{ focused: focus5 === true }">
+                    <label class="form-control-label">adultos</label>
+                    <div class="input-group input-group-merge">
+                      <input class="form-control" formControlName="adults" type="number"
+                      (focus)="focus5 = true" [ngClass]="{ 'is-invalid': submitted && f.adults.errors }"
+                      (blur)="focus5 = false"  />
+
+                      <div class="input-group-append">
+                        <span class="input-group-text" [ngClass]="{ border: submitted && f.adults.errors }">
+                          <i class="fas fa-male"> </i>
+                        </span>
+                      </div>
+                    </div>
+                    <div *ngIf="submitted && f.adults.errors" class="invalid">
+                      <div *ngIf="f.adults.errors">Adultos</div>
+                    </div>
+                  </div>
+                  <div class="form-group nmts" [ngClass]="{ focused: focus5 === true }">
+                    <label class="form-control-label">Niños</label>
+                    <div class="input-group input-group-merge">
+                      <input class="form-control" formControlName="childs" type="number"
+                      (focus)="focus5 = true" [ngClass]="{ 'is-invalid': submitted && f.childs.errors }"
+                      (blur)="focus5 = false"  />
+
+                      <div class="input-group-append">
+                        <span class="input-group-text" [ngClass]="{ border: submitted && f.childs.errors }">
+                          <i class="fas fa-child"> </i>
+                        </span>
+                      </div>
+                    </div>
+                    <div *ngIf="submitted && f.childs.errors" class="invalid">
+                      <div *ngIf="f.childs.errors">Niños</div>
+                    </div>
+                  </div>
+                  <div class="form-group col-12 col-md-3 col-sm-3" [ngClass]="{ focused: focus5 === true }">
+                    <label class="form-control-label">Afiliado</label>
+                    <div class="input-group input-group-merge">
+                      <input type="text" class="form-control" placeholder="Si es afiliado ingrese su credencial" formControlName="affi_type"/>
+                      <div class="input-group-append">
+                        <span class="input-group-text">
+                          <i class="fas fa-address-card"> </i>
+                        </span>
+                      </div>
+                      <div
+                        *ngIf="submitted && f.affi_type.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="submitted && f.affi_type.errors">
+                          Afiliado
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                  <div class="form-group col-12 col-md-2 col-lg-2">
+                    <label>&nbsp;</label>
+                    <button class="btn btn-md btn-success btn-block">
+                      Buscar
+                    </button>
+                  </div>
+
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+
+</div>

@@ -1,0 +1,34 @@
+<div class="header bg-gradient-warning pb-6">
+    <div class="container-fluid">
+        <div class="header-body">
+            <!-- Card stats -->
+            <div class="row align-items-center py-4">
+                <ng-container *ngFor="let item of items">
+                    <div class=" col-xl-3">
+                        <div class=" card card-stats">
+                            <div class=" card-body">
+                                <div class=" row">
+                                    <div class=" col">
+                                        <h4 class=" card-title text-uppercase text-muted mb-1">
+                                            {{ item.name }}
+                                        </h4>
+                                    </div>
+                                    <div class=" col-auto">
+                                        <div class=" icon icon-shape bg-gradient-green text-white rounded-circle shadow">
+                                            <i class=" ni ni-{{item.icon}}"> </i>
+                                        </div>
+                                    </div>
+    
+                                </div>
+                                <div class="mt-4 mb-0 text-muted text-sm">
+                                    <a [routerLink]="item.path" class="btn btn-primary btno">Ver</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+            </div>
+            
+        </div>
+    </div>
+</div>
