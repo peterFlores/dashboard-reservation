@@ -4,11 +4,13 @@
 
 export const environment = {
   production: false,
-  apiUrlOAuth: 'http://localhost:3000/auth',
+  apiUrlOAuth: 'http://localhost:3003/api/v1/auth',
   apiUrlClient: 'http://localhost:3001/api/v1/client',
   apiUrlUser: 'http://localhost:3002/api/v1/user',
-  apiUrlMenu: 'http://localhost:3003/api/v1/menu',
+  apiUrlMenu: 'http://localhost:3005/api/v1/menu',
   apiUrlHostal: 'http://localhost:3004/api/v1/hostal',
+  apiUrlReservation: 'http://localhost:3000/api/v1/reservation',
+  
 };
 
 /*

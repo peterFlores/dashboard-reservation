@@ -1,11 +1,13 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { first } from "rxjs/operators";
 import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-login",
-  templateUrl: "login.component.html"
+  templateUrl: "login.component.html",
+  styleUrls: ["login.component.scss"]
 })
 export class LoginComponent implements OnInit {
   focus;
@@ -13,9 +15,11 @@ export class LoginComponent implements OnInit {
   loginForm: FormGroup;
   loading = false;
   submitted = false;
+  returnUrl: string;
 
   constructor(private _authService: AuthService,
     private _formBuilder: FormBuilder,
+    private router: Router,
     ) {}
 
   ngOnInit() {
@@ -23,6 +27,15 @@ export class LoginComponent implements OnInit {
       email: ['', Validators.required],
       password: ['', Validators.required]
     });
+    const currentUser = this._authService.currentUserValue;
+    this.returnUrl = '/dashboard/dashboard';
+
+    if (currentUser) {
+      if (currentUser.type_user === 'CLIENT') this.returnUrl = '/client/main';
+
+      this.router.navigate([this.returnUrl]);
+    }
+
   }
 
   get f() { return this.loginForm.controls; }
@@ -36,14 +49,20 @@ export class LoginComponent implements OnInit {
     if (this.loginForm.invalid) {
       return;
     }
-
+    var type = 'CLIENT';
+    var email: string = this.f.email.value;
+    if (email.includes("@hostales.com")) type = 'USER';
     console.log(this.f);
     this.loading = true;
-    this._authService.login(this.f.email.value, this.f.password.value)
+    this._authService.login(email, this.f.password.value, type)
       .pipe(first())
       .subscribe(
         data => {  
-          console.log(data)                      
+          if (data) {
+            
+            if (type === 'CLIENT') this.returnUrl = '/client/main'
+            this.router.navigate([this.returnUrl]);
+          }                   
         },
         error => {
           this.loading = false;

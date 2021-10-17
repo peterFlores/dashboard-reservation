@@ -29,25 +29,5 @@ export class LoginComponent implements OnInit {
 
   onSubmit() {
 
-    this.submitted = true;
-
-
-    // stop here if form is invalid
-    if (this.loginForm.invalid) {
-      return;
-    }
-
-    console.log(this.f);
-    this.loading = true;
-    this._authService.login(this.f.email.value, this.f.password.value)
-      .pipe(first())
-      .subscribe(
-        data => {  
-          console.log(data)                      
-        },
-        error => {
-          this.loading = false;
-          console.log(error);
-        });
   }
 }

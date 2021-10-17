@@ -7,6 +7,7 @@ import {
   LocationStrategy,
   PathLocationStrategy
 } from "@angular/common";
+import { AuthService } from "src/app/services/auth.service";
 
 @Component({
   selector: "app-navbar",
@@ -18,10 +19,13 @@ export class NavbarComponent implements OnInit {
   public listTitles: any[];
   public location: Location;
   sidenavOpen: boolean = true;
+  user: string = '';
+  isClient = false;
   constructor(
     location: Location,
     private element: ElementRef,
-    private router: Router
+    private router: Router,
+    private _authService: AuthService
   ) {
     this.location = location;
     this.router.events.subscribe((event: Event) => {
@@ -50,6 +54,8 @@ export class NavbarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.user = this._authService.currentUserValue.userName;
+    this.isClient = this._authService.currentUserValue.type_user === 'CLIENT';
     this.listTitles = ROUTES.filter(listTitle => listTitle);
   }
   getTitle() {
@@ -111,5 +117,9 @@ export class NavbarComponent implements OnInit {
       document.body.classList.remove("g-sidenav-hidden");
       this.sidenavOpen = true;
     }
+  }
+
+  logout() {
+    this._authService.logout();
   }
 }

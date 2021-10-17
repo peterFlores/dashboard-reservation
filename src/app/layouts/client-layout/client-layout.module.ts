@@ -13,6 +13,7 @@ import { ReservationComponent } from './components/reservation/reservation.compo
 import { HostalsComponent } from 'src/app/layouts/client-layout/components/hostals/hostals.component';
 import { HostalsDetailComponent } from './components/hostals-detail/hostals-detail.component';
 import { MainClientComponent } from './components/main-client/main-client.component';
+import { ReservationPerUserComponent } from './components/reservation-per-user/reservation-per-user.component';
 
 
 
@@ -21,7 +22,8 @@ import { MainClientComponent } from './components/main-client/main-client.compon
     ReservationComponent, 
     HostalsComponent,
     HostalsDetailComponent,
-    MainClientComponent
+    MainClientComponent,
+    ReservationPerUserComponent
   ],
   imports: [
     CommonModule,

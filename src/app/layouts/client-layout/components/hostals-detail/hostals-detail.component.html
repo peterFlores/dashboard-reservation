@@ -1,64 +1,129 @@
-<div class=" header pb-6 d-flex align-items-center" [ngStyle]="{'background-image': 'url('+ picturePath +')'}"
-    style="min-height: 500px; background-size: cover; background-position: center top; -webkit-transition: background-image 0.2s ease-in-out;
+<div class=" header pb-6 d-flex align-items-center" [ngStyle]="{'background-image': 'url('+ picturePath +')'}" style="min-height: 500px; background-size: cover; background-position: center top; -webkit-transition: background-image 0.2s ease-in-out;
     transition: background-image 0.2s ease-in-out;">
-    <span class=" mask bg-gradient-danger opacity-6"> </span>
+  <span class=" mask bg-gradient-danger opacity-6"> </span>
 
-    <div class=" container-fluid d-flex align-items-center">
-        <div class=" row">
-            <div class=" col-lg-7 col-md-10">
-                <h1 class=" display-2 text-white">Bienvenido al hostal {{hostal?.name}}</h1>
+  <div class=" container-fluid d-flex align-items-center">
+    <div class=" row">
+      <div class=" col-lg-7 col-md-10">
+        <h1 class=" display-2 text-white">Bienvenido al hostal {{hostal?.name}}</h1>
 
-                <h5 class=" text-white mt-0 mb-5">
-                    {{hostal?.description}}
-                </h5>
-
-                <a class=" btn btn-neutral" href="javascript:void(0)"> Edit profile </a>
-            </div>
-        </div>
+        <h5 class=" text-white mt-0 mb-5">
+          {{hostal?.description}}
+        </h5>
+      </div>
     </div>
+  </div>
 </div>
 
 <div class=" container-fluid align-items-center mt--6">
-    <div class="row justify-content-center">
-        <ng-container *ngFor="let type of hostal?.price_list">
-            <div class=" card card-pricing border-0 text-center mb-4 mr-2">
-                <div class=" card-header bg-transparent">
-                  <h4 class=" text-uppercase ls-1 text-primary py-3 mb-0">
-                    {{type.affi_type}}
-                  </h4>
+  <div class="row justify-content-center">
+    <ng-container *ngFor="let type of hostal?.price_list">
+      <div class=" card card-pricing border-0 text-center mb-4 mr-2">
+        <div class=" card-header bg-transparent">
+          <h4 class=" text-uppercase ls-1 text-primary py-3 mb-0">
+            {{ type.affi_type == 1 ? 'Afiliado' : 'No Afiliado' }}
+          </h4>
+        </div>
+
+        <div class=" card-body px-lg-7">
+
+          <ul class=" list-unstyled my-4">
+            <li *ngFor="let prices of type?.prices">
+              <div class=" d-flex align-items-center">
+                <div>
+                  <div class=" icon icon-xs icon-shape bg-gradient-primary text-white shadow rounded-circle">
+                    <i class=" fas fa-terminal"> </i>
+                  </div>
                 </div>
-        
-                <div class=" card-body px-lg-7">
-    
-                  <ul class=" list-unstyled my-4">
-                    <li *ngFor="let prices of type?.prices">
-                      <div class=" d-flex align-items-center">
-                        <div>
-                          <div
-                            class=" icon icon-xs icon-shape bg-gradient-primary text-white shadow rounded-circle"
-                          >
-                            <i class=" fas fa-terminal"> </i>
-                          </div>
-                        </div>
-        
-                        <div>
-                          <span class=" pl-2 text-sm"> {{prices.title}} </span>
-                        </div>
-                        
-                      </div>
-                      <ul>
-                        <li *ngFor="let price_type of prices?.price_per_type">
-                            <div>
-                                <span class=" pl-2 text-sm"> <strong>Tipo:</strong> {{price_type?.type}} - {{price_type?.price | currency: 'GTQ'}} </span>
-                              </div>
-                        </li>
-                      </ul>
-                    </li>
-                  </ul>
+
+                <div>
+                  <span class=" pl-2 text-sm"> {{prices.title}} </span>
+                </div>
+
+              </div>
+              <ul>
+                <li *ngFor="let price_type of prices?.price_per_type">
+                  <div>
+                    <span class=" pl-2 text-sm"> <strong>Tipo:</strong> {{price_type?.type}} - {{price_type?.price |
+                      currency: 'GTQ'}} </span>
+                  </div>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </ng-container>
+
+
+  </div>
+</div>
+<div class=" container-fluid align-items-center mt--1">
+  <div class="row justify-content-center">
+    <div class=" card card-pricing border-0 text-center mb-4 mr-2  col-5">
+      <div class=" card-header bg-transparent">
+        <h4 class=" text-uppercase ls-1 text-primary py-3 mb-0">
+          Capacidad
+        </h4>
+      </div>
+
+      <div class=" card-body px-lg-7">
+
+        <ul class=" list-unstyled my-4">
+          <li *ngFor="let capacity of hostal?.capacity_and_benefits">
+            <div class=" d-flex align-items-center">
+              <div>
+                <div class=" icon icon-xs icon-shape bg-gradient-primary text-white shadow rounded-circle">
+                  <i class=" fas fa-terminal"> </i>
                 </div>
               </div>
-        </ng-container>
-        
-          
+
+              <div>
+                <span class=" pl-2 text-sm"> {{capacity.type}} </span>
+              </div>
+
+            </div>
+            <ul>
+              <li>
+                <div>
+                  <span class=" text-sm"> <strong>Adultos:</strong> {{capacity.capacity.adults}} </span>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <span class="text-sm"> <strong>Niños:</strong> {{capacity.capacity.childs}} </span>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
+</div>
+<div class=" container-fluid align-items-center mt--1">
+  <div class="row justify-content-center">
+    <div class=" card card-pricing border-0 text-center mb-4 mr-2  col-5">
+      <div class=" card-header bg-transparent">
+        <h4 class=" text-uppercase ls-1 text-primary py-3 mb-0">
+          Horarios
+        </h4>
+      </div>
+
+      <div class=" card-body px-lg-7">
+
+        <div class="row">
+          <div class="col-sm">
+            <span>Abierto las 24 horas.</span>
+          </div>
+          <div class="col-sm">
+            <span>Check In: 15:00</span>
+            <br>
+            <span>Check Out: 13:00</span>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

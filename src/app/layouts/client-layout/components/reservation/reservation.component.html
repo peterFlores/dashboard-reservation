@@ -57,7 +57,7 @@
                         <option value="" disabled>Seleccione...</option>
                         <option
                           *ngFor="let item of temp"
-                          [ngValue]="item._id"
+                          [ngValue]="item"
                         >
                           {{ item.name }}
                         </option>
@@ -171,4 +171,256 @@
   </div>
 
 
+</div>
+<div class=" container-fluid mt--6" *ngIf="showRooms">
+  <div class=" row align-items-center py-4">
+    <div class="col">
+      <div class="card">
+        <div class="card-header shadow">
+          <div class="row">
+            <h3 class="mb-0">Hostales disponibles</h3>
+            <div class="ml-auto mr-3"></div>
+          </div>
+        </div>
+        <div class="dataTables_wrapper py-4">
+        
+
+          <ngx-datatable class="bootstrap selection-cell" [columnMode]="'force'" [headerHeight]="50"
+              [footerHeight]="50" [rowHeight]="'auto'" [limit]="entries != -1 ? entries : undefined"
+              [scrollbarH]="true" [rows]="reservation">
+              <ngx-datatable-column *ngFor="let item of columns" name="{{ item.name }}"
+                  prop="{{ item.prop }}">
+
+              </ngx-datatable-column>
+              <ngx-datatable-column name="OPTIONS">
+                  <ng-template let-row="row" let-value="value" let-rowIndex="rowIndex"
+                      ngx-datatable-cell-template>
+                      <div class="own">
+                          <button class="btn btn-danger btno2" (click)="selectForCheckout(row)">
+                              SELECCIONAR
+                          </button>
+              
+
+                      </div>
+                      
+
+                  </ng-template>
+              </ngx-datatable-column>
+              
+          </ngx-datatable>
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class=" container-fluid mt--6 " *ngIf="showCheckout">
+  <div class=" row align-items-center py-4">
+    <div class="col">
+      <div class="card">
+        <div class="card-header shadow">
+          <div class="row">
+            <h3 class="mb-0">Realizar pago</h3>
+            <div class="ml-auto mr-3"></div>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="form-group">
+            <label class="form-control-label">Detalle de la transaccion </label>
+
+        </div>
+        <div class="form-group" >
+            <label class="form-control-label">Tipo de habitacion:</label>
+            <input type="text" readonly class="form-control" disabled value="{{checkoutItem.type}}"/>
+        </div>
+        <div class="form-group" >
+          <label class="form-control-label">Check IN:</label>
+          <input type="text" readonly class="form-control" disabled value="{{bsRangeValue[0] | date: 'dd/MM/yyyy'}}"/>
+        </div>
+        <div class="form-group" >
+          <label class="form-control-label">Check OUT:</label>
+          <input type="text" readonly class="form-control" disabled value="{{bsRangeValue[1] | date: 'dd/MM/yyyy' }}"/>
+      </div>
+      <div class="form-group" >
+        <label class="form-control-label">Total de la transaccion:</label>
+        <input type="text" readonly class="form-control" disabled value="{{checkoutItem.total_price | currency: 'GTQ'}}"/>
+      </div>
+      <form [formGroup]="paymentForm" (ngSubmit)="onSubmitPay()">
+        <div class="form-group" >
+          <label class="form-control-label">Tipo de pago:</label>
+          <select class="custom-select" formControlName="paymentType" [ngClass]="{
+            'is-invalid': submittedPay && p.paymentType.errors
+          }" (change)="switchPaymentType($event.target.value)">
+            <option [value]="" disabled>Seleccione...</option>
+            <option [value]="'DEPOSITO'"
+            >
+              DEPOSITO
+            </option>
+            <option [value]="'TC'"
+            >
+              PAGO ELECTRONICO
+            </option>
+          </select>
+          <div
+                        *ngIf="submittedPay && p.paymentType.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="submittedPay && p.paymentType.errors">
+                          Tipo de pago requerido
+                        </div>
+                      </div>
+        </div>
+        <div class="form-group" *ngIf="type === 'DEPOSITO'">
+          <label class="form-control-label">Correlativo del deposito:</label><br>
+          <span>* NOTA: Su estadia sera aprobada cuando el deposito haya sido verificado.</span>
+          <input [ngClass]="{
+            'is-invalid': submittedPay && p.correlativo.errors
+          }" type="text" class="form-control" placeholder="Correlativo de pago" formControlName="correlativo"/>
+          <div
+                        *ngIf="submittedPay && p.correlativo.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="submittedPay && p.correlativo.errors">
+                          Correlativo
+                        </div>
+                      </div>
+        </div>
+        <div class=" card bg-gradient-primary" *ngIf="type === 'TC'">
+          <div class=" card-body">
+            <div class=" row justify-content-between align-items-center">
+              <div class=" col">
+                <img
+                  alt="Image placeholder"
+                  src="assets/img/icons/cards/mastercard.png"
+                />
+              </div>
+  
+              
+            </div>
+  
+            <div class=" mt-4">
+                <div class=" form-group">
+                  <div class=" input-group input-group-alternative mb-3">
+                    <div class=" input-group-prepend">
+                      <span class=" input-group-text">
+                        <i class=" ni ni-single-02"> </i>
+                      </span>
+                    </div>
+  
+                    <input
+                      class=" form-control" [ngClass]="{
+                        'is-invalid': submittedPay && p.nameoncard.errors
+                      }" 
+                      placeholder="Name on card"
+                      type="text" formControlName="nameoncard"
+                    />
+                    <div
+                        *ngIf="submittedPay && p.nameoncard.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="submittedPay && p.nameoncard.errors">
+                          Nombre de tarjetahabiente
+                        </div>
+                      </div>
+                  </div>
+                </div>
+  
+                <div class=" form-group">
+                  <div class=" input-group input-group-alternative mb-3">
+                    <div class=" input-group-prepend">
+                      <span class=" input-group-text">
+                        <i class=" ni ni-credit-card"> </i>
+                      </span>
+                    </div>
+  
+                    <input
+                      class=" form-control"
+                      placeholder="Card number" [ngClass]="{
+                        'is-invalid': submittedPay && p.cardnumber.errors
+                      }" 
+                      type="text" formControlName="cardnumber"
+                    />
+                    <div
+                        *ngIf="submittedPay && p.cardnumber.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="submittedPay && p.cardnumber.errors">
+                          Numeracion de tarjeta
+                        </div>
+                      </div>
+                  </div>
+                </div>
+  
+                <div class=" row">
+                  <div class=" col-6">
+                    <div class=" form-group">
+                      <div class=" input-group input-group-alternative mb-3">
+                        <div class=" input-group-prepend">
+                          <span class=" input-group-text">
+                            <i class=" ni ni-calendar-grid-58"> </i>
+                          </span>
+                        </div>
+  
+                        <input
+                          class=" form-control"
+                          placeholder="MM/YY" [ngClass]="{
+                            'is-invalid': submittedPay && p.mmyy.errors
+                          }" 
+                          type="text" formControlName="mmyy"
+                        />
+                        <div
+                        *ngIf="submittedPay && p.mmyy.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="submittedPay && p.mmyy.errors">
+                          Numeracion de tarjeta
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+  
+                  <div class=" col-6">
+                    <div class=" form-group">
+                      <div class=" input-group input-group-alternative">
+                        <div class=" input-group-prepend">
+                          <span class=" input-group-text">
+                            <i class=" ni ni-lock-circle-open"> </i>
+                          </span>
+                        </div>
+  
+                        <input
+                          class=" form-control"
+                          placeholder="CCV" [ngClass]="{
+                            'is-invalid': submittedPay && p.ccv.errors
+                          }" 
+                          type="text" formControlName="ccv"
+                        />
+                        <div
+                        *ngIf="submittedPay && p.ccv.errors"
+                        class="invalid-feedback"
+                      >
+                        <div *ngIf="submittedPay && p.ccv.errors">
+                          Numeracion de tarjeta
+                        </div>
+                      </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            
+          </div>
+        </div>
+        <button class=" btn btn-block btn-info" type="submit">
+          Completar transaccion
+        </button>
+      </form>
+          
+          
+        </div>
+        
+        
+      </div>
+    </div>
+  </div>
 </div>

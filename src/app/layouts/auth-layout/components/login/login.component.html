@@ -1,4 +1,4 @@
-<div class="header bg-gradient-warning py-8 py-lg-8">
+<div class="header bg-gradient-danger py-8 py-lg-8">
   
   <div class="separator separator-bottom separator-skew zindex-100">
     <svg x="0" y="0" viewBox="0 0 2560 0" preserveAspectRatio="none" version="1.1" xmlns="http://www.w3.org/2000/svg">
@@ -13,7 +13,7 @@
       <div class="card bg-secondary shadow border-0">
         <div class="card-header bg-transparent pb-4">
           <div class="card-block text-center">
-            <img class="panel-profile-img" src="assets/img/brand/akisi-05.png"/>
+            <img class="panel-profile-img" src="assets/img/brand/hotel.png"/>
           </div>
         </div>
         <div class="card-body px-lg-5 py-lg-5">
@@ -23,9 +23,9 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text"><i class="ni ni-single-02"></i></span>
                 </div>
-                <input formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="User Name" type="text">
+                <input formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" placeholder="Email" type="text">
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                  <div *ngIf="f.email.errors.required">email is required</div>
+                  <div *ngIf="f.email.errors.required">Email es requerido</div>
               </div>
               </div>
             </div>
@@ -36,12 +36,12 @@
                 </div>
                 <input class="form-control" formControlName="password" placeholder="Password" type="password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                  <div *ngIf="submitted && f.password.errors">Password is required</div>
+                  <div *ngIf="submitted && f.password.errors">Password es requerido</div>
               </div>
               </div>
             </div>
             <div class="text-center">
-              <button [disabled]="loading" class="btn btno btn-lg btn-block">
+              <button [disabled]="loading" class="btn btn-success btn-lg btn-block">
                 <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
                   Login
               </button>

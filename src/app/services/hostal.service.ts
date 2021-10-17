@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Hostal } from '../layouts/admin-layout/components/hostal/hostal.model';
+import { Reservation } from '../layouts/client-layout/components/reservation/reservation.model';
 
 @Injectable({
   providedIn: 'root'
@@ -40,8 +41,8 @@ export class HostalService {
     });
   }
 
-  findReservation(data): Observable<any> {
-    return this._httpClient.post<any>(`${environment.apiUrlHostal}/reservation`, data, {
+  findReservation(data): Observable<Reservation> {
+    return this._httpClient.post<Reservation>(`${environment.apiUrlHostal}/reservation`, data, {
       headers: this.headers
     })
   }

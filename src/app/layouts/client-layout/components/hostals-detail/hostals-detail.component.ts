@@ -25,15 +25,15 @@ export class HostalsDetailComponent implements OnInit {
     
     this._hostalService.getHostalById(id).subscribe(data => {
       this.hostal = data;
-      this.picturePath = data.pictures[0];
+      this.picturePath = data?.pictures[0];
       console.log(this.hostal);
     });
   }
   updatePicture() {
     var index = 0;
     setInterval(() => {         //replaced function() by ()=>
-      index = (index + 1) % this.hostal.pictures.length;
-      this.picturePath = this.hostal.pictures[index];
+      index = (index + 1) % this.hostal?.pictures.length;
+      this.picturePath = this.hostal?.pictures[index];
     }, 4000);
   }
 }

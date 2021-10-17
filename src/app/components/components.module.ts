@@ -11,11 +11,12 @@ import { SidebarComponent } from "./sidebar/sidebar.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { FooterComponent } from "./footer/footer.component";
 import { VectorMapComponent1 } from "./vector-map/vector-map.component";
-
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from "@angular/router";
 import { CollapseModule } from "ngx-bootstrap/collapse";
 import { DxVectorMapModule } from "devextreme-angular";
 import { BsDropdownModule } from "ngx-bootstrap";
+import { AlertComponent } from "./alert/alert.component";
 
 @NgModule({
   imports: [
@@ -24,19 +25,22 @@ import { BsDropdownModule } from "ngx-bootstrap";
     CollapseModule.forRoot(),
     DxVectorMapModule,
     PerfectScrollbarModule,
+    NgbModule,
     BsDropdownModule.forRoot()
   ],
   declarations: [
     FooterComponent,
     VectorMapComponent1,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    AlertComponent
   ],
   exports: [
     FooterComponent,
     VectorMapComponent1,
     NavbarComponent,
-    SidebarComponent
+    SidebarComponent,
+    AlertComponent
   ],
   providers: [
     {
