@@ -11,7 +11,7 @@ import { User } from '../layouts/admin-layout/components/user/user.model';
 export class UserService {
   
   private headers = new HttpHeaders()
-  .set("Content-Type","aplication/json")
+  .set("Content-Type","application/json")
 
   constructor(private _httpClient: HttpClient) {}
 

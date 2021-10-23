@@ -20,8 +20,22 @@ export class ReservationService {
     });
   }
 
+  changeStatus(data): Observable<any> {
+    return this._httpClient.put<any>(`${environment.apiUrlReservation}/changeStatus/${data.id}`, JSON.stringify(data), {
+      headers: this.headers
+    });
+  }
+
+  findByStatus(status): Observable<ReservationPerUser[]> {
+    return this._httpClient.get<ReservationPerUser[]>(`${environment.apiUrlReservation}/status/${status}`);
+  }
+
   findByUserId(id): Observable<ReservationPerUser[]> {
     return this._httpClient.get<ReservationPerUser[]>(`${environment.apiUrlReservation}/user/${id}`);
+  }
+
+  findAll(): Observable<ReservationPerUser[]> {
+    return this._httpClient.get<ReservationPerUser[]>(`${environment.apiUrlReservation}`);
   }
   
 }

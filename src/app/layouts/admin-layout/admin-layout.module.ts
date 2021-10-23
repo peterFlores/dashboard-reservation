@@ -12,6 +12,7 @@ import { UserComponent } from './components/user/user.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { HostalComponent } from './components/hostal/hostal.component';
+import { ReservationsComponent } from './components/reservations/reservations.component';
 
 
 
@@ -20,7 +21,8 @@ import { HostalComponent } from './components/hostal/hostal.component';
     ClientComponent,
     UserComponent,
     MenuComponent,
-    HostalComponent
+    HostalComponent,
+    ReservationsComponent
   ],
   imports: [
     CommonModule,

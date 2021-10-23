@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { first } from "rxjs/operators";
+import { AlertService } from "src/app/services/alert.service";
 import { AuthService } from "src/app/services/auth.service";
 
 @Component({
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
   constructor(private _authService: AuthService,
     private _formBuilder: FormBuilder,
     private router: Router,
+    private _alertService: AlertService,
     ) {}
 
   ngOnInit() {
@@ -66,7 +68,15 @@ export class LoginComponent implements OnInit {
         },
         error => {
           this.loading = false;
+          this.showError("AUTENTICACION FALLO VERIFIQUE SUS DATOS");
           console.log(error);
         });
+  }
+  
+  showSuccess(message: string) {
+    this._alertService.success(message, { autoClose: true, keepAfterRouteChange: false})
+  }
+  showError(message: string) {
+    this._alertService.error(message, { autoClose: true, keepAfterRouteChange: true})
   }
 }
