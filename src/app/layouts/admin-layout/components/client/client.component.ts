@@ -56,9 +56,9 @@ export class ClientComponent implements OnInit {
     { name: "Segundo nombre", prop: "second_name"},
     { name: "Primer Apellido", prop: "last_name"},
     { name: "Tercer Apellido", prop: "slast_name"},
-    { name: "Telefono", prop: "phone"},
+    { name: "Teléfono", prop: "phone"},
     { name: "DPI", prop: "dpi"},
-    { name: "Direccion", prop: "address"},
+    { name: "Dirección", prop: "address"},
     { name: "Tipo de cliente", prop: "client_type"},
     { name: "Afiliado", prop: "affiliate"}
     

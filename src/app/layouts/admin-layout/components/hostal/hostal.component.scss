@@ -1,0 +1,50 @@
+.btno1 {
+    background-color: #6a2b82;
+    border-color: #6a2b82;
+    color: white;
+  }
+  ::ng-deep .theme-red {
+    .bs-datepicker-body {
+        table {
+          td {
+            span.selected {
+              background-color: #6a2b82 !important;
+            }
+          }
+        }
+      }
+      .bs-datepicker-head {
+          background-color: #6a2b82 !important;
+      }
+  }
+
+  .btno2 {
+    margin-right: 10%;
+    margin-top: 2%;
+    margin-bottom: 2%;
+    width: 100%;
+
+}
+
+.header {
+    padding-top: 2%;
+}
+
+.own {
+    display: -webkit-box;
+    /* display: none; */
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.content-errores{
+ height: 300px;overflow-y: auto; 
+}
+
+.imagenes { 
+  max-height: 500px;
+  max-width: 500px;
+  height: 100%;
+  width: 100%;
+}

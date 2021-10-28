@@ -37,6 +37,7 @@
     }
 
     export interface Hostal {
+        _id?: string;
         name: string;
         description: string;
         pictures: string[];

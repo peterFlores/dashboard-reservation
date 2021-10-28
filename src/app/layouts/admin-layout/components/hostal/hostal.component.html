@@ -1,4 +1,4 @@
-<div class="header bg-gradient-danger pb-6" >
+<div class="header bg-gradient-danger pb-6">
     <div class="container-fluid">
         <div class="row">
             <div class="col">
@@ -6,19 +6,19 @@
                     <div class="card-header">
                         <div class="row">
                             <h3 class="mb-0">Mantenimiento de Hostales</h3>
-                           
-                                           
+
+
                             <div class="ml-auto mr-3">
-                            
-                                <button class="btn btn-md btno1 " (click)="openDefaultModal(modalDefault)"> 
+
+                                <button class="btn btn-md btno1 " (click)="openDefaultModal(modalDefault)">
 
                                     Nuevo
 
                                 </button>
                             </div>
-                            
+
                         </div>
-                       
+
                     </div>
                     <ng-template #modalDefault>
                         <div class="modal-content">
@@ -36,117 +36,27 @@
                             <div class="modal-body">
                                 <div class="container">
                                     <form [formGroup]="newForm" (ngSubmit)="onSubmit()">
-                                    
+
                                         <div class="form-group">
-                                            <label class="form-control-label">Primer nombre</label>
-                                            <input type="text" class="form-control" placeholder="Primer nombre"
-                                                (focus)="focus5 = true" formControlName="first_name"
-                                                [ngClass]="{ 'is-invalid': submitted && a.first_name.errors}"
+                                            <label class="form-control-label">Nombre Hostal</label>
+                                            <input type="text" class="form-control" placeholder="Nombre Hostal"
+                                                (focus)="focus5 = true" formControlName="name"
+                                                [ngClass]="{ 'is-invalid': submitted && a.name.errors}"
                                                 (blur)="focus5 = false">
-                                            <div *ngIf="submitted && a.first_name.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.first_name.errors">Primer nombre requerido</div>
+                                            <div *ngIf="submitted && a.name.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && a.name.errors">Nombre Hostal requerido</div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="form-control-label">Segundo nombre</label>
-                                            <input type="text" class="form-control" placeholder="Segundo nombre"
-                                                (focus)="focus5 = true" formControlName="second_name"
-                                                [ngClass]="{ 'is-invalid': submitted && a.second_name.errors}"
+                                            <label class="form-control-label">Descripción</label>
+                                            <input type="text" class="form-control" placeholder="Descripción"
+                                                (focus)="focus5 = true" formControlName="description"
+                                                [ngClass]="{ 'is-invalid': submitted && a.description.errors}"
                                                 (blur)="focus5 = false">
-                                            <div *ngIf="submitted && a.second_name.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.second_name.errors">Segundo nombre requerido</div>
+                                            <div *ngIf="submitted && a.description.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && a.description.errors">Descripción requerida
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">Primer Apellido</label>
-                                            <input type="text" class="form-control" placeholder="Primer Apellido"
-                                                (focus)="focus5 = true" formControlName="last_name"
-                                                [ngClass]="{ 'is-invalid': submitted && a.last_name.errors}"
-                                                (blur)="focus5 = false">
-                                            <div *ngIf="submitted && a.last_name.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.last_name.errors">Primer Apellido requerido</div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">Segundo Apellido</label>
-                                            <input type="text" class="form-control" placeholder="Segundo Apellido"
-                                                (focus)="focus5 = true" formControlName="slast_name"
-                                                [ngClass]="{ 'is-invalid': submitted && a.slast_name.errors}"
-                                                (blur)="focus5 = false">
-                                            <div *ngIf="submitted && a.slast_name.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.slast_name.errors">Segundo Apellido requerido</div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">Teléfono</label>
-                                            <input type="text" class="form-control" placeholder="Teléfono"
-                                                (focus)="focus5 = true" formControlName="phone"
-                                                [ngClass]="{ 'is-invalid': submitted && a.phone.errors}"
-                                                (blur)="focus5 = false">
-                                            <div *ngIf="submitted && a.phone.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.phone.errors">Teléfono requerido</div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">Email</label>
-                                            <input type="text" class="form-control" placeholder="Email"
-                                                (focus)="focus5 = true" formControlName="email"
-                                                [ngClass]="{ 'is-invalid': submitted && a.email.errors}"
-                                                (blur)="focus5 = false">
-                                            <div *ngIf="submitted && a.email.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.email.errors">Email requerido</div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">DPI</label>
-                                            <input type="text" class="form-control" placeholder="DPI"
-                                                (focus)="focus5 = true" formControlName="dpi"
-                                                [ngClass]="{ 'is-invalid': submitted && a.dpi.errors}"
-                                                (blur)="focus5 = false">
-                                            <div *ngIf="submitted && a.dpi.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.dpi.errors">DPI requerido</div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">Dirección</label>
-                                            <input type="text" class="form-control" placeholder="Dirección"
-                                                (focus)="focus5 = true" formControlName="address"
-                                                [ngClass]="{ 'is-invalid': submitted && a.address.errors}"
-                                                (blur)="focus5 = false">
-                                            <div *ngIf="submitted && a.address.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.address.errors">Dirección requerida</div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">Contraseña</label>
-                                            <input type="text" class="form-control" placeholder="Contraseña" (focus)="focus5 = true" formControlName="password"
-                                                [ngClass]="{ 'is-invalid': submitted && a.password.errors}" (blur)="focus5 = false">
-                                            <div *ngIf="submitted && a.password.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.password.errors">Contraseña requerido</div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group " >
-                                            <label class="form-control-label">Tipo de Usario</label>
-                                            <select class="custom-select"  [(ngModel)]="selectValue" [ngModelOptions]="{standalone: true}">
-                                              <option value="" disabled>Seleccione...</option>
-                                              <option *ngFor="let item of items" [ngValue]="item.prop">{{item.name}}</option>
-                                           </select>
-                                        </div>
-                                        <div class="form-group" >
-                                            <label class="form-control-label">Tipo de Menu</label>
-                                            <ng-select
-                                            [items]="listMenu"
-                                            bindLabel="name"
-                                            placeholder="Menu"
-                                            [multiple]="true"
-                                            [closeOnSelect]="true"
-                                            [hideSelected]="false"
-                                            formControlName="menu">
-                                            <ng-template ng-option-tmp let-item="item">
-                                                {{ item.name }} <br />
-                                                <small>{{ item.path }}</small>
-                                              </ng-template>
-                                        </ng-select> 
                                         </div>
                                         <button type="submit" class="btn btno">
                                             Guardar
@@ -175,112 +85,44 @@
                                 <div class="container">
                                     <form [formGroup]="updateForm" (ngSubmit)="onUpdate()">
                                         <div class="form-group">
-                                            <label class="form-control-label">Primer nombre</label>
-                                            <input type="text" class="form-control" placeholder="Primer nombre"
-                                                (focus)="focus5 = true" formControlName="first_name"
-                                                [ngClass]="{ 'is-invalid': submitted && b.first_name.errors}"
+                                            <label class="form-control-label">Nombre Hostal</label>
+                                            <input type="text" class="form-control" placeholder="Nombre Hostal"
+                                                (focus)="focus5 = true" formControlName="name"
+                                                [ngClass]="{ 'is-invalid': submitted && b.name.errors}"
                                                 (blur)="focus5 = false">
-                                            <div *ngIf="submitted && b.first_name.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && b.first_name.errors">Primer nombre requerido</div>
+                                            <div *ngIf="submitted && b.name.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.name.errors">Nombre Hostal requerido</div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="form-control-label">Segundo nombre</label>
-                                            <input type="text" class="form-control" placeholder="Segundo nombre"
-                                                (focus)="focus5 = true" formControlName="second_name"
-                                                [ngClass]="{ 'is-invalid': submitted && b.second_name.errors}"
+                                            <label class="form-control-label">Descripción</label>
+                                            <input type="text" class="form-control"  placeholder="Descripción"
+                                                (focus)="focus5 = true" formControlName="description"
+                                                [ngClass]="{ 'is-invalid': submitted && b.description.errors}"
                                                 (blur)="focus5 = false">
-                                            <div *ngIf="submitted && b.second_name.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && b.second_name.errors">Segundo nombre requerido</div>
+                                            <div *ngIf="submitted && b.description.errors" class="invalid-feedback">
+                                                <div *ngIf="submitted && b.description.errors">Descripción requerida
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">Primer Apellido</label>
-                                            <input type="text" class="form-control" placeholder="Primer Apellido"
-                                                (focus)="focus5 = true" formControlName="last_name"
-                                                [ngClass]="{ 'is-invalid': submitted && b.last_name.errors}"
-                                                (blur)="focus5 = false">
-                                            <div *ngIf="submitted && b.last_name.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && b.last_name.errors">Primer Apellido requerido</div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">Segundo Apellido</label>
-                                            <input type="text" class="form-control" placeholder="Segundo Apellido"
-                                                (focus)="focus5 = true" formControlName="slast_name"
-                                                [ngClass]="{ 'is-invalid': submitted && b.slast_name.errors}"
-                                                (blur)="focus5 = false">
-                                            <div *ngIf="submitted && b.slast_name.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && b.slast_name.errors">Segundo Apellido requerido</div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">Teléfono</label>
-                                            <input type="text" class="form-control" placeholder="Teléfono"
-                                                (focus)="focus5 = true" formControlName="phone"
-                                                [ngClass]="{ 'is-invalid': submitted && b.phone.errors}"
-                                                (blur)="focus5 = false">
-                                            <div *ngIf="submitted && b.phone.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && b.phone.errors">Teléfono requerido</div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">Email</label>
-                                            <input type="text" class="form-control" placeholder="Email"
-                                                (focus)="focus5 = true" formControlName="email"
-                                                [ngClass]="{ 'is-invalid': submitted && b.email.errors}"
-                                                (blur)="focus5 = false">
-                                            <div *ngIf="submitted && b.email.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && b.email.errors">Email requerido</div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">DPI</label>
-                                            <input type="text" class="form-control" placeholder="DPI"
-                                                (focus)="focus5 = true" formControlName="dpi"
-                                                [ngClass]="{ 'is-invalid': submitted && b.dpi.errors}"
-                                                (blur)="focus5 = false">
-                                            <div *ngIf="submitted && b.dpi.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && b.dpi.errors">DPI requerido</div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">Dirección</label>
-                                            <input type="text" class="form-control" placeholder="Dirección"
-                                                (focus)="focus5 = true" formControlName="address"
-                                                [ngClass]="{ 'is-invalid': submitted && b.address.errors}"
-                                                (blur)="focus5 = false">
-                                            <div *ngIf="submitted && b.address.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && b.address.errors">Dirección requerida</div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label">Contraseña</label>
-                                            <input type="text" class="form-control" placeholder="Contraseña" (focus)="focus5 = true" formControlName="password"
-                                                [ngClass]="{ 'is-invalid': submitted && b.password.errors}" (blur)="focus5 = false">
-                                            <div *ngIf="submitted && b.password.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && b.password.errors">Contraseña requerido</div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group " >
-                                            <label class="form-control-label">Tipo de Usario</label>
-                                            <select class="custom-select"  [(ngModel)]="selectValue" [ngModelOptions]="{standalone: true}">
-                                              <option value="" disabled>Seleccione...</option>
-                                              <option *ngFor="let item of items" [ngValue]="item.prop">{{item.name}}</option>
-                                           </select>
-                                        </div>
-                                        <div class="form-group " >
-                                            <label class="form-control-label">Tipo de Menu</label>
-                                            <select class="custom-select"  [(ngModel)]="selectMenu" [ngModelOptions]="{standalone: true}">
-                                              <option value="" disabled>Seleccione...</option>
-                                              <option *ngFor="let item of itemsmenu" [ngValue]="item.prop">{{item.name}}</option>
-                                           </select>
-                                        </div>
-
-
+                                        <button type="submit" class="btn btno1" (click)="openupdatePrices(modal, row)">
+                                            Imagenes
+                                        </button>
+                                        <button type="submit" class="btn btno1" (click)="openupdatePrices(modal, row)">
+                                            Precios
+                                        </button>
+                                        <div>
+                                        <br>
+                                        <button type="submit" class="btn btno1">
+                                            Capacidad y Beneficios
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <br>
                                         <button type="submit" class="btn btno">
                                             Guardar
                                         </button>
+                                    </div>
                                     </form>
 
                                 </div>
@@ -288,10 +130,88 @@
                         </div>
                     </ng-template>
 
+
+                    <ng-template #properties let-c="close" let-d="dismiss">
+                        <div class="modal-content" >
+                            <div class="modal-header">
+                                <h1>Propiedades Hostal {{ hostal.name }}</h1>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"
+                                    (click)="propertiesModal.hide()">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <h1>Precios</h1>
+                                    <dl *ngFor="let type of hostal?.price_list">
+                                        <ul class=" list-unstyled my-4">
+                                            <li>
+                                            <lu>
+                                                {{ type.affi_type == 1 ? 'Afiliado' : 'No Afiliado' }}
+                                                <li *ngFor="let prices of type?.prices">
+                                                    <div class=" d-flex align-items-center">
+                                                      <div>
+                                                        <div class=" pl-2 text-sm">
+                                                          <i class=" fas fa-total">Dia: </i>
+                                                        </div>
+                                                      </div>
+                                      
+                                                      <div>
+                                                        <span class=" pl-2 text-sm"> {{prices.title}} </span>
+                                                      </div>
+                                      
+                                                    </div>
+                                                    <ul>
+                                                      <li *ngFor="let price_type of prices?.price_per_type">
+                                                        <div>
+                                                          <span class=" pl-2 text-sm"> <strong>Tipo:</strong> {{price_type?.type}} - {{price_type?.price |
+                                                            currency: 'GTQ'}} </span>
+                                                        </div>
+                                                      </li>
+                                                    </ul>
+                                                  </li>
+                                            </lu>
+                                        </li>
+                                           
+                                          </ul>
+                                    </dl>
+                                <h1>Capacidad</h1>
+                                    <dl  *ngFor="let capacity of hostal?.capacity_and_benefits">
+                                        <div>
+                                            <span class=" pl-2 text-sm"> {{capacity.type}} </span>
+                                          </div>
+                                          <ul>
+                                            <li>
+                                              <div>
+                                                <span class=" text-sm"> <strong>Adultos:</strong> {{capacity.capacity.adults}} </span>
+                                              </div>
+                                            </li>
+                                            <li>
+                                              <div>
+                                                <span class="text-sm"> <strong>Niños:</strong> {{capacity.capacity.childs}} </span>
+                                              </div>
+                                            </li>
+                                          </ul>  
+                                    </dl>
+
+                                <h1>Imagenes</h1>
+                                <lu>
+                                    <dl *ngFor="let picture of pictures">
+                                        <img src="{{picture}}" class="imagenes" alt="">
+                                    </dl>
+
+                                </lu>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal"
+                                    (click)="propertiesModal.hide()">No</button>
+                            </div>
+                        </div>
+                    </ng-template>
+
                     <ng-template #confirmation let-c="close" let-d="dismiss">
                         <div class="modal-content bg-gradient-danger">
                             <div class="modal-header">
-                                <h6 class="modal-title" id="modal-title-notification">Eliminar Usuario</h6>
+                                <h6 class="modal-title" id="modal-title-notification">Eliminar Hostal</h6>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"
                                     (click)="confirmationModal.hide()">
                                     <span aria-hidden="true">×</span>
@@ -300,14 +220,14 @@
                             <div class="modal-body">
                                 <div class="py-3 text-center">
                                     <i class="ni ni-bell-55 ni-3x"></i>
-                                    <h4 class="heading mt-4">Esta seguro de eliminar este Usuario?</h4>
+                                    <h4 class="heading mt-4">Esta seguro de eliminar este Hostal?</h4>
                                 </div>
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-white"
-                                    (click)="deleteUser(selectedRow)">Si</button>
+                                    (click)="deleteHostal(selectedRow)">Si</button>
                                 <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal"
-                                    (click)="confirmationModal.hide()">Cerrar</button>
+                                    (click)="confirmationModal.hide()">No</button>
                             </div>
                         </div>
                     </ng-template>
@@ -317,7 +237,7 @@
                             <div class="col-sm-12 col-md-6">
                                 <div class="dataTables_length" id="datatable_length">
                                     <label>
-                                        Show
+                                        Mostrar
                                         <select name="datatable_length" aria-controls="datatable"
                                             class="form-control form-control-sm" (change)="entriesChange($event)">
                                             <option value="10" [selected]="entries == 10">10</option>
@@ -325,7 +245,7 @@
                                             <option value="50" [selected]="entries == 50">50</option>
                                             <option value="-1" [selected]="entries == -1">All</option>
                                         </select>
-                                        entries
+                                        Entradas
                                     </label>
                                 </div>
                             </div>
@@ -334,7 +254,7 @@
                                 <div id="datatable_filter" class="dataTables_filter">
                                     <label>
                                         <input type="search" class="form-control form-control-sm"
-                                            placeholder="Search records" aria-controls="datatable"
+                                            placeholder="Busqueda" aria-controls="datatable"
                                             (keyup)="filterTable($event)" />
                                     </label>
                                 </div>
@@ -346,30 +266,32 @@
                             [scrollbarH]="true" (activate)="onActivate($event)" [rows]="temp">
                             <ngx-datatable-column *ngFor="let item of columns" name="{{ item.name }}"
                                 prop="{{ item.prop }}">
-
                             </ngx-datatable-column>
-                            <ngx-datatable-column name="OPTIONS">
-                                <ng-template let-row="row" let-value="value" let-rowIndex="rowIndex"
+                            <ngx-datatable-column name="OPCIONES">
+                                <ng-template let-row="row" let-value="value" let-rowIndex=""
                                     ngx-datatable-cell-template>
                                     <div class="own">
+                                        <button class="btn btn-white btno2"
+                                            (click)="openPropertiesModal(properties, row)">
+                                            PROPIEDADES
+                                        </button>
                                         <button class="btn btn-danger btno2"
                                             (click)="openDeleteModal(confirmation, row)">
                                             BORRAR
                                         </button>
-                                        <button class="btn btn-primary btno2"
-                                        (click)="openUpdateModal(update, row)">
-                                        EDITAR
-                                    </button>
+                                        <button class="btn btn-primary btno2" (click)="openUpdateModal(update, row)">
+                                            EDITAR
+                                        </button>
 
                                     </div>
-                                    
+
 
                                 </ng-template>
                             </ngx-datatable-column>
                         </ngx-datatable>
                     </div>
-                    
-                    
+
+
                 </div>
             </div>
         </div>
