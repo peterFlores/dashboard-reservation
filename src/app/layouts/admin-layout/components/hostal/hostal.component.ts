@@ -1,9 +1,10 @@
 import { Component, OnInit, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
+import { pipeFromArray } from 'rxjs/internal/util/pipe';
 import { ComponentsComponent } from 'src/app/pages/components/components/components.component';
 import { HostalService } from 'src/app/services/hostal.service';
-import { Hostal, PriceList } from './hostal.model';
+import { AffiBenefit, CapacityAndBenefit, Hostal, PriceList } from './hostal.model';
 
 
 @Component({
@@ -16,6 +17,8 @@ export class HostalComponent implements OnInit {
   selected: any[] = [];
   activeRow: any;
   focus5;
+    hostal: Hostal;
+  picturePath: string;
 
   defaultModal: BsModalRef;
   default = {
@@ -35,6 +38,12 @@ export class HostalComponent implements OnInit {
     class: "modal-dialog-centered"
   }
 
+
+  propertiesModal: BsModalRef;
+  properties = {
+    class: "modal-content"
+  }
+
   submitted = false;
   newForm: FormGroup;
   updateForm: FormGroup;
@@ -47,20 +56,29 @@ export class HostalComponent implements OnInit {
   
   columns: any =[
     { name: "Nombre Hostal" , prop: "name"},
-    { name: "Descripción" , prop: "description"},
-    { name: "Imagen" , prop: "pictures"},
-    { name: "Precios" , prop: "price_list"},
-    { name: "Capacidad Beneficios" , prop: "capacity_and_benefits"}
+    { name: "Descripción" , prop: "description"}
   ];
+
+  prices: PriceList[];
+
+  capacities: Array<string>;
+
+  benefits: CapacityAndBenefit[];
+
+  pictures: Array<string>;
+  
 
 selectValue: string; 
 
 constructor(private _hostalService: HostalService, private _modalService: BsModalService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
-    this._hostalService.getHostal().subscribe(data => {
-      console.log(data);
-      console.log(this.list);
+      this.newForm = this.formBuilder.group({
+      name: ['', [Validators.required]],
+      description: ['', [Validators.required]],
+      pictures: ['', [Validators.required]],
+      price_list: ['', [Validators.required]],
+      capacity_and_benefits: ['', [Validators.required]]
     });  
 
     this._hostalService.getHostal().subscribe(data => {
@@ -68,13 +86,21 @@ constructor(private _hostalService: HostalService, private _modalService: BsModa
       this.temp = this.list;
       console.log(data);
       console.log(this.list);
-    });    
+    }); 
+  }
+
+  getServices(id: any): void {
+    
+    this._hostalService.getHostalById(id).subscribe(data => {
+      this.hostal = data;
+      this.picturePath = data?.pictures[0];
+      console.log(this.hostal);
+    });
   }
 
   entriesChange($event) {
     this.entries = $event.target.value;
   }
-  
   filterTable($event) {
     let val = $event.target.value.toString().toLowerCase();
     console.log(val);
@@ -97,5 +123,115 @@ constructor(private _hostalService: HostalService, private _modalService: BsModa
     });
 
   }
+
+  get a() { return this.newForm.controls; }
+  get b() { return this.updateForm.controls; }
+
+  openDefaultModal(modalDefault: TemplateRef<any>) {
+    this.newForm.reset();
+    this.defaultModal = this._modalService.show(modalDefault, this.default);
+  }
+  onActivate(event) {
+    this.activeRow = event.row;
+  }
+
+  openDeleteModal(modal: TemplateRef<any>, row: Hostal) {
+    this.selectedRow = row;
+    this.confirmationModal = this._modalService.show(modal, this.confirmation);
+  }
+
+
+  openUpdateModal(modal: TemplateRef<any>, row: Hostal) {
+    this.selectedRow = row;
+    this.updateForm = this.formBuilder.group({
+    name: [row.name, [Validators.required]],
+    description: [row.description, [Validators.required]], 
+    pictures: [row.pictures, [Validators.required]],
+    price_list: [row.price_list, [Validators.required]],
+    capacity_and_benefits: [row.capacity_and_benefits, [Validators.required]]
+    });
+  
+    this.updateModal = this._modalService.show(modal, this.update);
+  }
+
+  deleteHostal(row: Hostal) {
+    this._hostalService.delete(row._id).subscribe(data => {
+      this.ngOnInit();
+    }, error => {
+      console.log(error);
+    });
+  }
+
+  onSubmit() {
+    this.submitted = true;
+    this.newForm.get("status").setValue(this.selectValue);
+    if (this.newForm.invalid) {
+      console.log(this.newForm);
+      return;
+    }
+    let json = this.newForm.getRawValue();
+    console.log(this.newForm.getRawValue());
+    this._hostalService.create(json).subscribe(data => {
+      this.defaultModal.hide();
+      console.log(data);
+      this.ngOnInit();
+    }, error => {
+      console.log(error);
+      
+    });
+  }
+
+
+  onUpdate() {
+    this.submitted = true;
+    this.newForm.get("status").setValue(this.selectValue);
+    if (this.updateForm.invalid) {
+      console.log(this.updateForm);
+      return;
+    }
+
+    let json = this.updateForm.getRawValue();
+    this._hostalService.update(json, this.selectedRow._id).subscribe(data => {
+      this.updateModal.hide();
+      console.log(data);
+      this.ngOnInit();
+    }, error => {
+      console.log(error);
+      
+    });
+  }
+
+  openPropertiesModal(modal: TemplateRef<any>, row: Hostal) {
+    this.selectedRow = row;
+    this.propertiesModal = this._modalService.show(modal, this.properties);
+    this._hostalService.getHostalById(row._id).subscribe(data => {
+      this.hostal = data;
+      this.picturePath = data?.pictures[0];
+      console.log(this.hostal);
+    });
+
+  
+
+
+    const pictures: Array<string> =  Object.values(row.pictures).map(value => {
+      console.log(value)
+      return value;
+    });
+    this.pictures = pictures;
+
+    const prices: PriceList[] =  Object.values(row.price_list).map(value => {
+      console.log(value)
+      return value;
+    });
+    this.prices = prices;
+
+    const benefits: CapacityAndBenefit[] =  Object.values(row.capacity_and_benefits).map(value => {
+      console.log(value)
+    const  capacities = value.capacity;
+      return value;
+    });
+    this.benefits = benefits;
+
+}
 
 }

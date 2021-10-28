@@ -56,7 +56,6 @@ export class MenuComponent implements OnInit {
     { name: "Ruta", prop: "path"},
     { name: "Descripción", prop: "description"},
     { name: "Nombre Menu", prop: "name"},
-    { name: "v", prop: "__v"}
   ];
 
   selectValue: string;

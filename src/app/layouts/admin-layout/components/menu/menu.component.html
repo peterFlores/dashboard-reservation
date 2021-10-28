@@ -53,17 +53,17 @@
                                                 [ngClass]="{ 'is-invalid': submitted && a.image.errors}"
                                                 (blur)="focus5 = false">
                                             <div *ngIf="submitted && a.image.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.image.errors">Status requerido</div>
+                                                <div *ngIf="submitted && a.image.errors">Imagen requerido</div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="form-control-label">Path</label>
-                                            <input type="text" class="form-control" placeholder="Path"
+                                            <label class="form-control-label">Ruta</label>
+                                            <input type="text" class="form-control" placeholder="Ruta"
                                                 (focus)="focus5 = true" formControlName="path"
                                                 [ngClass]="{ 'is-invalid': submitted && a.path.errors}"
                                                 (blur)="focus5 = false">
                                             <div *ngIf="submitted && a.path.errors" class="invalid-feedback">
-                                                <div *ngIf="submitted && a.path.errors">Status requerido</div>
+                                                <div *ngIf="submitted && a.path.errors">Ruta requerido</div>
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -190,7 +190,7 @@
                                 <button type="button" class="btn btn-white"
                                     (click)="deleteMenu(selectedRow)">Si</button>
                                 <button type="button" class="btn btn-link text-white ml-auto" data-dismiss="modal"
-                                    (click)="confirmationModal.hide()">Cerrar</button>
+                                    (click)="confirmationModal.hide()">No</button>
                             </div>
                         </div>
                     </ng-template>
@@ -200,7 +200,7 @@
                             <div class="col-sm-12 col-md-6">
                                 <div class="dataTables_length" id="datatable_length">
                                     <label>
-                                        Show
+                                        Mostrar
                                         <select name="datatable_length" aria-controls="datatable"
                                             class="form-control form-control-sm" (change)="entriesChange($event)">
                                             <option value="10" [selected]="entries == 10">10</option>
@@ -208,7 +208,7 @@
                                             <option value="50" [selected]="entries == 50">50</option>
                                             <option value="-1" [selected]="entries == -1">All</option>
                                         </select>
-                                        entries
+                                        Entradas
                                     </label>
                                 </div>
                             </div>
@@ -217,7 +217,7 @@
                                 <div id="datatable_filter" class="dataTables_filter">
                                     <label>
                                         <input type="search" class="form-control form-control-sm"
-                                            placeholder="Search records" aria-controls="datatable"
+                                            placeholder="Busqueda" aria-controls="datatable"
                                             (keyup)="filterTable($event)" />
                                     </label>
                                 </div>
@@ -231,7 +231,7 @@
                                 prop="{{ item.prop }}">
 
                             </ngx-datatable-column>
-                            <ngx-datatable-column name="OPTIONS">
+                            <ngx-datatable-column name="OPCIONES">
                                 <ng-template let-row="row" let-value="value" let-rowIndex="rowIndex"
                                     ngx-datatable-cell-template>
                                     <div class="own">
