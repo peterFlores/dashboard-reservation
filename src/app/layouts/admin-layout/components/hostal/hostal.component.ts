@@ -38,7 +38,6 @@ export class HostalComponent implements OnInit {
     class: "modal-dialog-centered"
   }
 
-
   propertiesModal: BsModalRef;
   properties = {
     class: "modal-content"
@@ -66,6 +65,8 @@ export class HostalComponent implements OnInit {
   benefits: CapacityAndBenefit[];
 
   pictures: Array<string>;
+
+  picturesCreate: Array<string>;
   
 
 selectValue: string; 
@@ -76,9 +77,9 @@ constructor(private _hostalService: HostalService, private _modalService: BsModa
       this.newForm = this.formBuilder.group({
       name: ['', [Validators.required]],
       description: ['', [Validators.required]],
-      pictures: ['', [Validators.required]],
-      price_list: ['', [Validators.required]],
-      capacity_and_benefits: ['', [Validators.required]]
+      pictures: [''],
+      price_list: [''],
+      capacity_and_benefits: ['']
     });  
 
     this._hostalService.getHostal().subscribe(data => {
@@ -148,7 +149,7 @@ constructor(private _hostalService: HostalService, private _modalService: BsModa
     description: [row.description, [Validators.required]], 
     pictures: [row.pictures, [Validators.required]],
     price_list: [row.price_list, [Validators.required]],
-    capacity_and_benefits: [row.capacity_and_benefits, [Validators.required]]
+    capacity_and_benefits: [row.capacity_and_benefits, [Validators.required]] 
     });
   
     this.updateModal = this._modalService.show(modal, this.update);
@@ -164,14 +165,19 @@ constructor(private _hostalService: HostalService, private _modalService: BsModa
 
   onSubmit() {
     this.submitted = true;
-    this.newForm.get("status").setValue(this.selectValue);
     if (this.newForm.invalid) {
       console.log(this.newForm);
       return;
     }
+
+    this.newForm.get('pictures').setValue([]);
+    this.newForm.get('price_list').setValue([]);
+    this.newForm.get('capacity_and_benefits').setValue([]);
+
+
     let json = this.newForm.getRawValue();
     console.log(this.newForm.getRawValue());
-    this._hostalService.create(json).subscribe(data => {
+      this._hostalService.create(json).subscribe(data => {
       this.defaultModal.hide();
       console.log(data);
       this.ngOnInit();

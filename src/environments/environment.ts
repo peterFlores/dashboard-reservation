@@ -2,7 +2,7 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-/*  export const environment = {
+ /*export const environment = {
       production: false,
    apiUrlOAuth: 'http://localhost:3003/api/v1/auth',
    apiUrlClient: 'http://localhost:3001/api/v1/client',
@@ -12,7 +12,7 @@
    apiUrlReservation: 'http://localhost:3006/api/v1/reservation',
   
  };
- */
+  */
  export const environment = {
   production: false,
   apiUrlOAuth: 'http://137.135.92.123:3003/api/v1/auth',
