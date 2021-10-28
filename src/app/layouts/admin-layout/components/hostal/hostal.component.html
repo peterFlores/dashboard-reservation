@@ -146,7 +146,7 @@
                                         <ul class=" list-unstyled my-4">
                                             <li>
                                             <lu>
-                                                {{ type.affi_type }}
+                                                {{ type.affi_type == 1 ? 'Afiliado' : 'No Afiliado' }}
                                                 <li *ngFor="let prices of type?.prices">
                                                     <div class=" d-flex align-items-center">
                                                       <div>
