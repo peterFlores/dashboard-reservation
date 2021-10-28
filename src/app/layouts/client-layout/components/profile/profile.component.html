@@ -1,0 +1,180 @@
+<div class=" header pb-6 d-flex align-items-center"
+    style="min-height: 500px; background-image: url(assets/img/theme/profile-cover.jpg); background-size: cover; background-position: center top;">
+    <span class=" mask bg-gradient-danger opacity-8"> </span>
+
+    <div class=" container-fluid d-flex align-items-center">
+        <div class=" row">
+            <div class=" col-lg-7 col-md-10">
+                <h1 class="text-white">Hola, {{user}}</h1>
+
+                <p class=" text-white mt-0 mb-5">
+                    Esta es tu página de perfil. Puedes actualizar algunos datos.
+                </p>
+
+                <a class=" btn btn-neutral" [routerLink]="['/client/main']"> Inicio </a>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class=" container-fluid mt--6">
+
+
+    <div class=" card">
+        <div class=" card-header">
+            <div class=" row align-items-center">
+                <div class=" col-8">
+                    <h3 class=" mb-0">Editar perfil</h3>
+                
+                </div>
+            </div>
+        </div>
+
+        <div class=" card-body" *ngIf="show">
+            <form [formGroup]="clientForm"(ngSubmit)="onSubmit()">
+                <h6 class=" heading-small text-muted mb-4">User information</h6>
+
+                <div class=" pl-lg-4">
+                    <div class=" row">
+                        <div class=" col-lg-6">
+                            <div class=" form-group">
+                                <label class=" form-control-label" for="input-email">
+                                    Email 
+                                </label>
+
+                                <input class=" form-control" readonly formControlName="email" id="input-email" placeholder="example@example.com"
+                                    type="email" [ngClass]="{
+                                        'is-invalid': submitted && f.email.errors
+                                      }"/>
+                            </div>
+                        </div>
+
+                        <div class=" col-lg-6">
+                            <div class=" form-group">
+                                <label class=" form-control-label" >
+                                    Primer nombre
+                                </label>
+
+                                <input class=" form-control" formControlName="first_name" placeholder="Primer nombre"
+                                    type="text" [ngClass]="{
+                                        'is-invalid': submitted && f.first_name.errors
+                                      }" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" row">
+                        <div class=" col-lg-6">
+                            <div class=" form-group">
+                                <label class=" form-control-label" for="input-first-name">
+                                    Segundo nombre
+                                </label>
+
+                                <input class=" form-control" formControlName="second_name" id="input-first-name" placeholder="Segundo nombre" type="text"
+                                    value="Lucky"[ngClass]="{
+                                        'is-invalid': submitted && f.second_name.errors
+                                      }" />
+                            </div>
+                        </div>
+
+                        <div class=" col-lg-6">
+                            <div class=" form-group">
+                                <label class=" form-control-label"  for="input-last-name">
+                                    Primer Apellido 
+                                </label>
+
+                                <input class=" form-control" id="input-last-name" formControlName="last_name" placeholder="Primer Apellido" type="text"
+                                    value="Jesse" [ngClass]="{
+                                        'is-invalid': submitted && f.last_name.errors
+                                      }"/>
+                            </div>
+                        </div>
+                        <div class=" col-lg-6">
+                            <div class=" form-group">
+                                <label class=" form-control-label" for="input-last-name">
+                                    Segundo Apellido 
+                                </label>
+
+                                <input class=" form-control" id="input-last-name"formControlName="slast_name" placeholder="Segundo Apellido" type="text"
+                                    value="Jesse" [ngClass]="{
+                                        'is-invalid': submitted && f.slast_name.errors
+                                      }"/>
+                            </div>
+                        </div>
+                        <div class=" col-lg-6">
+                            <div class=" form-group">
+                                <label class=" form-control-label" for="input-last-name">
+                                    DPI
+                                </label>
+
+                                <input class=" form-control" id="input-last-name" readonly formControlName="dpi" placeholder="DPI" type="text"
+                                    value="Jesse" [ngClass]="{
+                                        'is-invalid': submitted && f.dpi.errors
+                                      }"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <hr class=" my-4" />
+
+                <h6 class=" heading-small text-muted mb-4">Contact information</h6>
+
+                <div class=" pl-lg-4">
+                    <div class=" row">
+                        <div class=" col-md-12">
+                            <div class=" form-group">
+                                <label class=" form-control-label" for="input-address">
+                                    Direccion
+                                </label>
+
+                                <input class=" form-control" id="input-address" formControlName="address" placeholder="direccion" type="text"
+                                    value="Bld Mihail Kogalniceanu, nr. 8 Bl 1, Sc 1, Ap 09" [ngClass]="{
+                                        'is-invalid': submitted && f.address.errors
+                                      }"/>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class=" row">
+                        <div class=" col-lg-4">
+                            <div class=" form-group">
+                                <label class=" form-control-label" for="input-city">
+                                    Telefono
+                                </label>
+
+                                <input class=" form-control" id="input-city"  formControlName="phone" placeholder="Telefono" type="text"
+                                    value="New York" [ngClass]="{
+                                        'is-invalid': submitted && f.phone.errors
+                                      }"/>
+                            </div>
+                        </div>
+
+                        <div class=" col-lg-4">
+                            <div class=" form-group">
+                                <label class=" form-control-label" for="input-country">
+                                    Afiliado
+                                </label>
+
+                                <input class=" form-control" id="input-country" formControlName="affiliate" placeholder="Afiliado" type="text"
+                                    value="United States" [ngClass]="{
+                                        'is-invalid': submitted && f.affiliate.errors
+                                      }"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>&nbsp;</label>
+                        <button class="btn btn-md btn-success btn-block ml-auto">
+                          Actualizar
+                        </button>
+                      </div>
+                </div>
+                
+            
+            </form>
+        </div>
+
+    </div>
+</div>

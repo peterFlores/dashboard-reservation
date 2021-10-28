@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { ComponentsComponent } from 'src/app/pages/components/components/components.component';
+import { AlertService } from 'src/app/services/alert.service';
 import { ClientService } from 'src/app/services/client.service';
 import { Client } from './client.model';
 
@@ -65,7 +66,8 @@ export class ClientComponent implements OnInit {
 
   selectValue: string;
 
-  constructor(private _clientService: ClientService, private _modalService: BsModalService, private formBuilder: FormBuilder) { }
+  constructor(private _clientService: ClientService, private _alertService: AlertService,
+    private _modalService: BsModalService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.newForm = this.formBuilder.group({
@@ -154,6 +156,8 @@ export class ClientComponent implements OnInit {
 
   deleteClient(row: Client) {
     this._clientService.delete(row._id).subscribe(data => {
+      this.confirmationModal.hide();
+      this.showSuccess("EXITO");
       this.ngOnInit();
     }, error => {
       console.log(error);
@@ -172,7 +176,7 @@ export class ClientComponent implements OnInit {
     console.log(this.newForm.getRawValue());
     this._clientService.create(json).subscribe(data => {
       this.defaultModal.hide();
-      console.log(data);
+      this.showSuccess("EXITO");
       this.ngOnInit();
     }, error => {
       console.log(error);
@@ -191,12 +195,19 @@ export class ClientComponent implements OnInit {
     let json = this.updateForm.getRawValue();
     this._clientService.update(json, this.selectedRow._id).subscribe(data => {
       this.updateModal.hide();
-      console.log(data);
+      this.showSuccess("EXITO");
       this.ngOnInit();
     }, error => {
       console.log(error);
       
     });
+  }
+
+  showSuccess(message: string) {
+    this._alertService.success(message, { autoClose: true, keepAfterRouteChange: true})
+  }
+  showError(message: string) {
+    this._alertService.error(message, { autoClose: true, keepAfterRouteChange: true})
   }
 
 }

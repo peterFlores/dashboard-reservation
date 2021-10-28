@@ -18,6 +18,10 @@ export class ClientService {
     return this._httpClient.get<Client[]>(`${environment.apiUrlClient}`);
   }
 
+  getClient(id: string): Observable<Client> {
+    return this._httpClient.get<Client>(`${environment.apiUrlClient}/id/${id}`);
+  }
+
   delete(id: string): Observable<any> {
    return this._httpClient.delete<any>(`${environment.apiUrlClient}/${id}`); 
   }
@@ -29,7 +33,7 @@ export class ClientService {
     });
   }
 
-  update(data: string, id: string): Observable<Client> {
+  update(data, id: string): Observable<Client> {
     return this._httpClient.put<Client>(`${environment.apiUrlClient}/${id}`, data, {
       headers: this.headers
     });

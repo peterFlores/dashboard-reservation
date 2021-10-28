@@ -7,6 +7,7 @@ import { MenuService } from 'src/app/services/menu.service';
 
 import { Menu } from '../menu/menu.model';
 import { User } from './user.model';
+import { AlertService } from 'src/app/services/alert.service';
 
 @Component({
   selector: 'app-user',
@@ -73,7 +74,8 @@ export class UserComponent implements OnInit {
   selectValue: string;
   listMenu: Menu[] =[];
 
-  constructor(private _userService: UserService,private _menuService: MenuService, private _modalService: BsModalService, private formBuilder: FormBuilder) { }
+  constructor(private _userService: UserService, private _menuService: MenuService, private _alertService: AlertService,
+    private _modalService: BsModalService, private formBuilder: FormBuilder) { }
 
 
   ngOnInit() {
@@ -174,6 +176,7 @@ export class UserComponent implements OnInit {
 
   deleteUser(row: User) {
     this._userService.delete(row._id).subscribe(data => {
+      this.showSuccess("EXITO");
       this.ngOnInit();
     }, error => {
       console.log(error);
@@ -193,7 +196,7 @@ export class UserComponent implements OnInit {
     console.log(this.newForm.getRawValue());
     this._userService.create(json).subscribe(data => {
       this.defaultModal.hide();
-      console.log(data);
+      this.showSuccess("EXITO");
       this.ngOnInit();
     }, error => {
       console.log(error);
@@ -214,7 +217,7 @@ export class UserComponent implements OnInit {
     let json = this.updateForm.getRawValue();
     this._userService.update(json, this.selectedRow._id).subscribe(data => {
       this.updateModal.hide();
-      console.log(data);
+      this.showSuccess("EXITO");
       this.ngOnInit();
     }, error => {
       console.log(error);
@@ -222,5 +225,10 @@ export class UserComponent implements OnInit {
     });
   }
 
-
+  showSuccess(message: string) {
+    this._alertService.success(message, { autoClose: true, keepAfterRouteChange: true})
+  }
+  showError(message: string) {
+    this._alertService.error(message, { autoClose: true, keepAfterRouteChange: true})
+  }
 }

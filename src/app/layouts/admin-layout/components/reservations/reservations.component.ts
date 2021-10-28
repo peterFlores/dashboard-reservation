@@ -45,10 +45,16 @@ export class ReservationsComponent implements OnInit {
   }
 
   changeReservation($event) {
-    this._reservationService.findByStatus($event.target.value).subscribe(data => {
-      this.temp = data;
-      console.log(this.temp);
-    })
+    console.log($event.target.value);
+    if ($event.target.value !== 'ALL'){
+      this._reservationService.findByStatus($event.target.value).subscribe(data => {
+        this.temp = data;
+        console.log(this.temp);
+      });
+    } else {
+      this.temp = this.reservations;
+    }
+    
   }
 
   toggleExpandRow(row) {
@@ -57,6 +63,10 @@ export class ReservationsComponent implements OnInit {
   }
   openDefaultModal(modalDefault: TemplateRef<any>, row: ReservationPerUser) {
     this.selectedRow = row;
+    if (this.selectedRow.status === 'CONFIRM') this.statusRes = 'CHECK-IN';
+    if (this.selectedRow.status === 'PENDING-CONFIRMATION') this.statusRes = 'CONFIRM';
+    if (this.selectedRow.status === 'CHECK-IN') this.statusRes = 'CHECK-OUT';
+    
     this.confirmationModal = this._modalService.show(modalDefault, this.confirmation);
   }
   changeStatus(row: ReservationPerUser) {
@@ -66,13 +76,16 @@ export class ReservationsComponent implements OnInit {
     console.log(row);
     this._reservationService.changeStatus(row).subscribe(data => {
       this.showSuccess("ESTADO ACTUALIZADO CON EXITO");
+      this.confirmationModal.hide();
+      this.ngOnInit();
     });
   }
   status($event) {
     this.statusRes = $event.target.value;
+    console.log(this.statusRes);
   }
   showSuccess(message: string) {
-    this._alertService.success(message, { autoClose: true, keepAfterRouteChange: false})
+    this._alertService.success(message, { autoClose: true, keepAfterRouteChange: true})
   }
   showError(message: string) {
     this._alertService.error(message, { autoClose: true, keepAfterRouteChange: true})
@@ -88,8 +101,8 @@ export class ReservationsComponent implements OnInit {
     let val = $event.target.value.toString().toLowerCase();
     console.log(val);
     let count = this.columns.length;
-    let keys = Object.keys(this.list[0]);
-    this.temp = this.list.filter(item => {
+    let keys = Object.keys(this.reservations[0]);
+    this.temp = this.reservations.filter(item => {
 
       for (let i = 0; i < count; i++) {
         if (

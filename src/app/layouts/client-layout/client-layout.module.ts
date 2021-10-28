@@ -14,6 +14,7 @@ import { HostalsComponent } from 'src/app/layouts/client-layout/components/hosta
 import { HostalsDetailComponent } from './components/hostals-detail/hostals-detail.component';
 import { MainClientComponent } from './components/main-client/main-client.component';
 import { ReservationPerUserComponent } from './components/reservation-per-user/reservation-per-user.component';
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 
@@ -23,7 +24,8 @@ import { ReservationPerUserComponent } from './components/reservation-per-user/r
     HostalsComponent,
     HostalsDetailComponent,
     MainClientComponent,
-    ReservationPerUserComponent
+    ReservationPerUserComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

@@ -2,6 +2,7 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap';
 import { ComponentsComponent } from 'src/app/pages/components/components/components.component';
+import { AlertService } from 'src/app/services/alert.service';
 import { MenuService } from 'src/app/services/menu.service';
 import { Menu } from './menu.model';
 
@@ -56,12 +57,12 @@ export class MenuComponent implements OnInit {
     { name: "Ruta", prop: "path"},
     { name: "Descripción", prop: "description"},
     { name: "Nombre Menu", prop: "name"},
-    { name: "v", prop: "__v"}
   ];
 
   selectValue: string;
 
-  constructor(private _menuService: MenuService, private _modalService: BsModalService, private formBuilder: FormBuilder) { }
+  constructor(private _menuService: MenuService, private _alertService: AlertService,
+    private _modalService: BsModalService, private formBuilder: FormBuilder) { }
 
   ngOnInit() {
     this.newForm = this.formBuilder.group({
@@ -136,6 +137,8 @@ openDefaultModal(modalDefault: TemplateRef<any>) {
 
   deleteMenu(row: Menu) {
     this._menuService.delete(row._id).subscribe(data => {
+      this.confirmationModal.hide();
+      this.showSuccess("EXITO");
       this.ngOnInit();
     }, error => {
       console.log(error);
@@ -153,7 +156,7 @@ openDefaultModal(modalDefault: TemplateRef<any>) {
     console.log(this.newForm.getRawValue());
     this._menuService.create(json).subscribe(data => {
       this.defaultModal.hide();
-      console.log(data);
+      this.showSuccess("EXITO");
       this.ngOnInit();
     }, error => {
       console.log(error);
@@ -171,12 +174,19 @@ openDefaultModal(modalDefault: TemplateRef<any>) {
     let json = this.updateForm.getRawValue();
     this._menuService.update(json, this.selectedRow._id).subscribe(data => {
       this.updateModal.hide();
-      console.log(data);
+      this.showSuccess("EXITO");
       this.ngOnInit();
     }, error => {
       console.log(error);
       
     });
+  }
+
+  showSuccess(message: string) {
+    this._alertService.success(message, { autoClose: true, keepAfterRouteChange: true})
+  }
+  showError(message: string) {
+    this._alertService.error(message, { autoClose: true, keepAfterRouteChange: true})
   }
 
 }

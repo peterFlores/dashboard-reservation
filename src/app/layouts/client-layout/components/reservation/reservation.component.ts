@@ -122,7 +122,7 @@ export class ReservationComponent implements OnInit {
     console.log(json);
     this._reservationService.create(json).subscribe(data => {
       this.showSuccess("RESERVACION EXITOSA");
-      //this._route.navigate(['/client/main']);
+      this._route.navigate(['/client/main']);
     });
 
   }

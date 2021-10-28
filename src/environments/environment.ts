@@ -21,7 +21,7 @@ export const environment = {
   apiUrlMenu: 'http://137.135.92.123:3005/api/v1/menu',
   apiUrlHostal: 'http://137.135.92.123:3004/api/v1/hostal',
   apiUrlReservation: 'http://137.135.92.123:3000/api/v1/reservation',
-  
+  apiUrlReports: 'http://137.135.92.123:3007/api/v1/reports'
 };
 
 /*

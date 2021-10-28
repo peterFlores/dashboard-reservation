@@ -18,18 +18,10 @@
                                     <span aria-hidden="true">×</span>
                                 </button>
                             </div>
-                            <div class="modal-body">
-                                <select name="datatable_length" aria-controls="datatable"
-                                            class="form-control form-control-sm" (change)="status($event)">
-                                            <option value="CHECK-IN" >CHECK-IN</option>
-                                            <option value="CHECK-OUT" >CHECK-OUT</option>
-                                            <option value="PENDING-CONFIRMATION" >CONFIRMACION PENDIENTE</option>
-                                            <option value="CONFIRM" >CONFIRMADA</option>
-                                            <option value="ALL" >TODOS</option>
-                                        </select>
+                            <div class="modal-body"> 
                                 <div class="py-3 text-center">
                                     <i class="ni ni-bell-55 ni-3x"></i>
-                                    <h4 class="heading mt-4">Esta seguro de cambiar el estado de esta reservacion?</h4>
+                                    <h4 class="heading mt-4">Esta seguro de cambiar el estado de esta reservacion a {{statusRes}}?</h4>
                                 </div>
                             </div>
                             <div class="modal-footer">
@@ -78,7 +70,7 @@
                                 <div id="datatable_filter" class="dataTables_filter">
                                     <label>
                                         <input type="search" class="form-control form-control-sm"
-                                            placeholder="Search records" aria-controls="datatable"
+                                            placeholder="Buscar" aria-controls="datatable"
                                             (keyup)="filterTable($event)" />
                                     </label>
                                 </div>
@@ -138,13 +130,11 @@
                                 <ng-template let-row="row" let-value="value" let-rowIndex="rowIndex"
                                     ngx-datatable-cell-template>
                                     <div class="own">
-                                        <button *ngIf="row.status === 'PENDING-CONFIRMATION'" class="btn btn-danger btno2" (click)="openDefaultModal(confirmation, row)">
+                                        <button class="btn btn-danger btno2" *ngIf="row.status !== 'CHECK-OUT'" (click)="openDefaultModal(confirmation, row)">
                                             CAMBIAR ESTADO
                                         </button>
 
                                     </div>
-                                    
-
                                 </ng-template>
                             </ngx-datatable-column>
                         </ngx-datatable>

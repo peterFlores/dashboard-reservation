@@ -1,0 +1,121 @@
+<div class="header bg-gradient-danger py-8 py-lg-8">
+
+    <div class="separator separator-bottom separator-skew zindex-100">
+        <svg x="0" y="0" viewBox="0 0 2560 0" preserveAspectRatio="none" version="1.1"
+            xmlns="http://www.w3.org/2000/svg">
+            <polygon class="fill-default" points="2560 0 2560 100 0 100"></polygon>
+        </svg>
+    </div>
+</div>
+<!-- Page content -->
+<div class="container mt--6 pb-5">
+    <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-7">
+            <div class="card bg-secondary shadow border-0">
+                <div class="card-header bg-transparent pb-4">
+                    <div class="card-block text-center">
+                        <img class="panel-profile-img" src="assets/img/brand/hotel.png" />
+                    </div>
+                </div>
+                <div class="card-body px-lg-5 py-lg-5">
+                    <form [formGroup]="registerForm" role="form" (ngSubmit)="onSubmit()">
+                        <div class="form-group">
+                            <label class="form-control-label">Email</label>
+                            <input type="text" class="form-control" placeholder="Correo electronico" (focus)="focus5 = true" formControlName="email"
+                                [ngClass]="{ 'is-invalid': submitted && a.email.errors}" (blur)="focus5 = false">
+                            <div *ngIf="submitted && a.email.errors" class="invalid-feedback">
+                                <div *ngIf="submitted && a.email.errors">Email requerido</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Contraseña</label>
+                            <input type="text" class="form-control" placeholder="Contraseña" (focus)="focus5 = true" formControlName="password"
+                                [ngClass]="{ 'is-invalid': submitted && a.password.errors}" (blur)="focus5 = false">
+                            <div *ngIf="submitted && a.password.errors" class="invalid-feedback">
+                                <div *ngIf="submitted && a.password.errors">Contraseña requerida</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Primer nombre</label>
+                            <input type="text" class="form-control" placeholder="Primer nombre" (focus)="focus5 = true" formControlName="first_name"
+                                [ngClass]="{ 'is-invalid': submitted && a.first_name.errors}" (blur)="focus5 = false">
+                            <div *ngIf="submitted && a.first_name.errors" class="invalid-feedback">
+                                <div *ngIf="submitted && a.first_name.errors">Primer nombre requerido</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Segundo nombre</label>
+                            <input type="text" class="form-control" placeholder="Segundo nombre" (focus)="focus5 = true" formControlName="second_name"
+                                [ngClass]="{ 'is-invalid': submitted && a.second_name.errors}" (blur)="focus5 = false">
+                            <div *ngIf="submitted && a.second_name.errors" class="invalid-feedback">
+                                <div *ngIf="submitted && a.second_name.errors">Segundo nombre requerido</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Primer Apellido</label>
+                            <input type="text" class="form-control" placeholder="Primer Apellido" (focus)="focus5 = true" formControlName="last_name"
+                                [ngClass]="{ 'is-invalid': submitted && a.last_name.errors}" (blur)="focus5 = false">
+                            <div *ngIf="submitted && a.last_name.errors" class="invalid-feedback">
+                                <div *ngIf="submitted && a.last_name.errors">Primer Apellido requerido</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Segundo Apellido</label>
+                            <input type="text" class="form-control" placeholder="Segundo Apellido" (focus)="focus5 = true" formControlName="slast_name"
+                                [ngClass]="{ 'is-invalid': submitted && a.slast_name.errors}" (blur)="focus5 = false">
+                            <div *ngIf="submitted && a.slast_name.errors" class="invalid-feedback">
+                                <div *ngIf="submitted && a.slast_name.errors">Segundo Apellido requerido</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Teléfono</label>
+                            <input type="text" class="form-control" placeholder="Teléfono" (focus)="focus5 = true" formControlName="phone"
+                                [ngClass]="{ 'is-invalid': submitted && a.phone.errors}" (blur)="focus5 = false">
+                            <div *ngIf="submitted && a.phone.errors" class="invalid-feedback">
+                                <div *ngIf="submitted && a.phone.errors">Teléfono requerido</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">DPI</label>
+                            <input type="text" class="form-control" placeholder="DPI" (focus)="focus5 = true" formControlName="dpi"
+                                [ngClass]="{ 'is-invalid': submitted && a.dpi.errors}" (blur)="focus5 = false">
+                            <div *ngIf="submitted && a.dpi.errors" class="invalid-feedback">
+                                <div *ngIf="submitted && a.dpi.errors">DPI requerido</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Dirección</label>
+                            <input type="text" class="form-control" placeholder="Dirección" (focus)="focus5 = true" formControlName="address"
+                                [ngClass]="{ 'is-invalid': submitted && a.address.errors}" (blur)="focus5 = false">
+                            <div *ngIf="submitted && a.address.errors" class="invalid-feedback">
+                                <div *ngIf="submitted && a.address.errors">Dirección requerida</div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-control-label">Afiliado</label>
+                            <input type="text" class="form-control" placeholder="Afiliado" (focus)="focus5 = true" formControlName="affiliate">
+                        </div>
+                        <div class="form-group ">
+                            <label class="form-control-label">Tipo Cliente</label>
+                            <select class="custom-select" [(ngModel)]="selectValue"  [ngClass]="{ 'is-invalid': submitted && a.client_type.errors}" [ngModelOptions]="{standalone: true}">
+                                <option value="" disabled>Seleccione...</option>
+                                <option *ngFor="let item of items" [ngValue]="item.prop">{{item.name}}</option>
+                            </select>
+                        </div>
+                        <div class="text-center">
+                            <button [disabled]="loading" type="submit" class="btn btn-success btn-lg btn-block">
+                                <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                                Registrarse
+                            </button>
+                        </div>
+                        <div class="text-center mt-2">
+                            <button [routerLink]="['/auth/login']" class="btn btn-warning btn-lg btn-block">
+                                Ingresar
+                            </button>
+                          </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
