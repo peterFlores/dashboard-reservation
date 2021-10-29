@@ -28,6 +28,7 @@ export class ReservationsComponent implements OnInit {
   columns: any =[
     { name: "Transaccion" , prop: "id"},
     { name: "Tipo de pago" , prop: "payment_type"},
+    { name: "Detalles" , prop: "payment_details"},
     { name: "Fecha de reservacion" , prop: "created_at"},
     { name: "Estatus" , prop: "status"},
     { name: "Total" , prop: "total"}
@@ -41,6 +42,7 @@ export class ReservationsComponent implements OnInit {
     this._reservationService.findAll().subscribe(data => {
       this.reservations = data;
       this.temp = this.reservations;
+      console.log(data);
     });
   }
 
